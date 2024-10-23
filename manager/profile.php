@@ -25,16 +25,16 @@ $employees=$stmtManager->fetchAll(PDO::FETCH_ASSOC);
     <div class="container">
         <p class="text-right">
             Hello Manager;
-            <a onclick="return confirm('Are you sure to logout?');" href="">Logout</a>
+            <a onclick="return confirm('Are you sure to logout?');" href="../logout.php">Logout</a>
         </p>
 
         <div class="main">
             <h2>Profile of Employees</h2>
             <div class="card">
-                <div class="card-header">
+                <!-- <div class="card-header">
                     Add New Employee
                     <a href="addemployee.php" class="btn btn-primary">Add New</a>
-                </div>
+                </div> -->
                 <div class="card-body">
                     <table class="table table-bordered">
                         <thead>
@@ -44,8 +44,6 @@ $employees=$stmtManager->fetchAll(PDO::FETCH_ASSOC);
                                 <th>Email</th>
                                 <th>Password</th>
                                 <th>Contact</th>
-                                <th>Department ID</th>
-                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -58,11 +56,6 @@ $employees=$stmtManager->fetchAll(PDO::FETCH_ASSOC);
                                 <td><?php echo $employee['email']; ?></td>
                                 <td><?php echo $employee['password']; ?></td>
                                 <td><?php echo $employee['contact']; ?></td>
-                                <td><?php echo $employee['department_id']; ?></td>
-                                <td>
-                                    <a href="editemployee.php?id=<?php echo $employee['id']; ?>">Edit</a> |
-                                    <a href="">Delete</a>
-                                </td>
                             </tr>
                             <?php } ?>
                         </tbody>

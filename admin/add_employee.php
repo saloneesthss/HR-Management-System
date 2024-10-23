@@ -1,9 +1,9 @@
 <?php
 require_once "../connection.php";
 
-$stmtemp=$con->prepare("select * from employees");
-$stmtemp->execute();
-$employees=$stmtemp->fetchAll(PDO::FETCH_ASSOC);
+// $stmtemp=$con->prepare("select * from employees");
+// $stmtemp->execute();
+// $employees=$stmtemp->fetchAll(PDO::FETCH_ASSOC);
 
 if($_SERVER['REQUEST_METHOD']==='POST') {
     //handle login submit
