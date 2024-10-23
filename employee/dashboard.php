@@ -6,7 +6,6 @@
 </head>
 <body>
     <div class="section" id="dashboard">
-        <?php require_once("../includes/sidebar.php"); ?>
     </div>
 </body>
 </html>
