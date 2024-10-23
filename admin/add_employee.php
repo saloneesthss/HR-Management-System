@@ -14,7 +14,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
     $contact=$_POST['contact'];
     $department_id=$_POST['department_id'];
     
-    $sql="insert into employees set EmployeeID='$id' EmployeeName='$name', Email='$email', Password='$password', Contact='$contact', DepartmentID='$department_id'";
+    $sql="insert into employees set EmployeeID='$id' Emp_Name='$name', Email='$email', Password='$password', Contact='$contact', Dep_ID='$department_id'";
     $empStmt=$con->prepare($sql);
     $empStmt->execute();
 
