@@ -10,38 +10,45 @@ require_once "../logincheck.php";
 </head>
 <body>
     <div class="container">
-        <aside class="sidebar">
-            <h2>Dashboard</h2>
+        <aside>
+            <div class="top">
+                
+            <div class="logo">
+             <h2>C<span class="danger">BABAR</span></h2>
+</div>
+<div class="close">
+    <span class="material-symbols-sharp">close</span>
+</div>
+</div>
+<div class="sidebar">
+    <a href="#">
+        <span class="material-symbols-sharp">grid_view</span>
+        <h3>Dashboard</h3>
+</a>
+<a href="#" class="active">
+    <span class="material-symbols-sharp">person_outline</span>
+    <h3>Profile</h3>
+</a>
+<a href="#">
+<span class="material-symbols-sharp">pen-to-square</span>
+<h3>Leave Request</h3>
+</a>
+<a href="#">
+<span class="material-symbols-sharp">receipt_long</span>
+<h3>Leave Subsitution</h3>
+</a>
+
+
+
+
+
             <ul>
-                <li><a href="profile.php">Profile</a></li>
-                <li><a href="leaveapprove.html">Leave Request</a></li>
-                <li><a href="settings.html">Settings</a></li>
+        <li><a href="profile.php">Profile</a></li>
+                <li><a href="leave_approve.html">Leave Request</a></li>
+                <li><a href="leave_substitute.html">Leave Substitution</a></li>
             </ul>
         </aside>
-
-        <main class="main-content">
-            <header>
-                <h1>Welcome, Mr.Manager</h1>
-                <p>Here's a summary of the employees of your department.</p>
-            </header>
-
-            <section id="profile" class="card">
-                <h2>Profile of employees:</h2>
-                <p>Name:</p>
-                <p>Position:</p>
-                <p>Department:</p>
-            </section>
-
-            <section id="leaverequest" class="card">
-                <h2>Leave Requests</h2>
-                <p>No new leave requests</p>
-            </section>
-
-            <section id="settings" class="card">
-                <h2>Settings</h2>
-                <p>Manage your account settings here.</p>
-            </section>
-        </main>
     </div>
 </body>
 </html>
+
