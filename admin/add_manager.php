@@ -1,5 +1,5 @@
 <?php
-require_once "../connection.php";
+require_once "logincheck.php";
 
 if($_SERVER['REQUEST_METHOD']==='POST') {
     //handle login submit
@@ -33,13 +33,15 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
         </p>
 
         <div class="main">
-            <h2>Add Manager</h2>
+            <h2>Add New Manager</h2>
             <div class="card">
-                <div class="card-header">
-                    Add New Manager
-                    <a href="addcategory.php" class="btn btn-primary">Add New</a>
-                </div>
                 <div class="card-body">
+                    <?php if(isset($_GET['success'])) { ?>
+                    <div class="alert alert-success">
+                        <?php echo $_GET['success']; ?>
+                    </div>
+                    <?php } ?>
+                    
                     <form action="" method="post">
                         <div class="form-group">
                             <label for="name">Name:</label>
@@ -63,7 +65,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                         </div>
 
                         <button type="submit" class="btn btn-primary">Save</button>
-                        <a href="categories.php" class="btn btn-danger">Cancel</a>
+                        <a href="add_manager.php" class="btn btn-danger">Cancel</a>
                     </form>
                 </div>
             </div>
