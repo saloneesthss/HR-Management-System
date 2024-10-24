@@ -1,18 +1,20 @@
 <?php
-require_once "./logincheck.php";
+require_once "../connection.php";
 
 if($_SERVER['REQUEST_METHOD']==='POST') {
     //handle login submit
     $name=$_POST['name'];
-    $description=$_POST['description'];
-    $status=$_POST['status'];
+    $email=$_POST['email'];
+    $password=$_POST['password'];
+    $address=$_POST['address'];
+    $dep_id=$_POST['dep_id'];
     
-    $sql="insert into categories set name='$name', description='$description', status='$status'";
-    $catStmt=$con->prepare($sql);
-    $catStmt->execute();
+    $sql="insert into manager set Man_Name='$name', Email='$email', Password='$password', Address='$address', Dep_ID='$dep_id'";
+    $manStmt=$con->prepare($sql);
+    $manStmt->execute();
 
-    //redirect the user to category
-    header("Location:categories.php?success=Category added successfully.");
+    //redirect the user to manager
+    header("Location:dashboard.php?success=Manager added successfully.");
     die;
 }
 ?>
@@ -20,8 +22,8 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Administrative Panel - Swastik Ecommerce</title>
-    <link rel="stylesheet" href="../css/bootstrap.css">
+    <title>Administrative Panel - HR Management System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
 </head>
 <body>
     <div class="container">
@@ -30,13 +32,11 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
             <a onclick="return confirm('Are you sure to logout?');" href="logout.php">Logout</a>
         </p>
 
-        <?php require_once("menus.php"); ?>
-
         <div class="main">
-            <h2>Categories</h2>
+            <h2>Add Manager</h2>
             <div class="card">
                 <div class="card-header">
-                    Add New Category
+                    Add New Manager
                     <a href="addcategory.php" class="btn btn-primary">Add New</a>
                 </div>
                 <div class="card-body">
@@ -46,19 +46,24 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                             <input type="text" class="form-control" name="name" id="name">
                         </div>
                         <div class="form-group">
-                            <label for="description">Description:</label>
-                            <textarea name="description" id="description" rows="5" class="form-control"></textarea>
+                            <label for="email">Email:</label>
+                            <input type="text" class="form-control" name="email" id="email">
                         </div>
                         <div class="form-group">
-                            <label for="status">Status:</label>
-                            <select name="status" id="status" class="form-control">
-                                <option value="">Select Status</option>
-                                <option value="1">Active</option>
-                                <option value="0">Inactive</option>
-                            </select>
+                            <label for="password">Password:</label>
+                            <input type="password" class="form-control" name="password" id="password">
                         </div>
+                        <div class="form-group">
+                            <label for="address">Address:</label>
+                            <input type="text" class="form-control" name="address" id="address">
+                        </div>
+                        <div class="form-group">
+                            <label for="dep_id">Department ID:</label>
+                            <input type="text" class="form-control" name="dep_id" id="dep_id">
+                        </div>
+
                         <button type="submit" class="btn btn-primary">Save</button>
-                        <a href="categories.php" class="btn btn-secondary">Cancel</a>
+                        <a href="categories.php" class="btn btn-danger">Cancel</a>
                     </form>
                 </div>
             </div>
