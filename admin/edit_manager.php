@@ -15,18 +15,18 @@ if(!$manager) {
     header("Location:managers.php?error=No manager found with the given ID.");
     die;
 }
-// print_r($category);
-// die;
 
 if($_SERVER['REQUEST_METHOD']==='POST') {
     //handle login submit
     $name=$_POST['name'];
-    $description=$_POST['description'];
-    $status=$_POST['status'];
+    $email=$_POST['email'];
+    $password=$_POST['password'];
+    $contact=$_POST['contact'];
+    $dep_id=$_POST['dep_id'];
     
-    $sql="update categories set name='$name', description='$description', status='$status' where id=$id";
-    $catStmt=$con->prepare($sql);
-    $catStmt->execute();
+    $sql="update manager set Man_Name='$name', Email='$email', password='$password', Contact='$contact', Dep_ID='$dep_id' where ManagerID=$id";
+    $manStmt=$con->prepare($sql);
+    $manStmt->execute();
 
     //redirect the admin to manager listing page
     header("Location:managers.php?success=Manager updated successfully.");
@@ -47,38 +47,50 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
             <a onclick="return confirm('Are you sure to logout?');" href="logout.php">Logout</a>
         </p>
 
-        <?php require_once("menus.php"); ?>
-
         <div class="main">
-            <h2>Categories</h2>
+            <h2>Edit Manager</h2>
             <div class="card">
-                <div class="card-header">
-                    Edit Category
-                </div>
                 <div class="card-body">
                     <form action="" method="POST">
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input type="text" 
-                            value="<?php echo $category['name'] ?>"
+                            value="<?php echo $manager['name'] ?>"
                             class="form-control" 
                             name="name" 
                             id="name">
                         </div>
                         <div class="form-group">
-                            <label for="description">Description:</label>
-                            <textarea name="description" 
-                            id="description" 
-                            rows="5" 
-                            class="form-control"> <?php echo $category['description'] ?> </textarea>
+                            <label for="email">Email:</label>
+                            <input type="email" 
+                            value="<?php echo $manager['email'] ?>"
+                            class="form-control" 
+                            name="email" 
+                            id="email">
                         </div>
                         <div class="form-group">
-                            <label for="status">Status:</label>
-                            <select name="status" id="status" class="form-control">
-                                <option value="">Select Status</option>
-                                <option <?php echo $category['status']==1?'selected':'';?> value="1">Active</option>
-                                <option <?php echo $category['status']==0?'selected':'';?> value="0">Inactive</option>
-                            </select>
+                            <label for="password">Password:</label>
+                            <input type="password" 
+                            value="<?php echo $manager['password'] ?>"
+                            class="form-control" 
+                            name="password" 
+                            id="password">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact">Contact:</label>
+                            <input type="number" 
+                            value="<?php echo $manager['contact'] ?>"
+                            class="form-control" 
+                            name="contact" 
+                            id="contact">
+                        </div>
+                        <div class="form-group">
+                            <label for="dep_id">Department ID:</label>
+                            <input type="text" 
+                            value="<?php echo $manager['dep_id'] ?>"
+                            class="form-control" 
+                            name="dep_id" 
+                            id="dep_id">
                         </div>
                         <button type="submit" class="btn btn-primary">Save</button>
                         <a href="categories.php" class="btn btn-secondary">Cancel</a>

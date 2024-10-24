@@ -10,40 +10,27 @@ require_once "logincheck.php";
 </head>
 
 <body>
-<div class="container">
-<p class="text-right">
-    Hello <?php echo $_SESSION['username']; ?> 
-    <a onclick="return confirm('Are you sure to logout?');" href="logout.php">Logout</a>
-</p>
-<div class="card-header">
-    Add New Employee
-    <a href="add_employee.php" class="btn btn-primary">Add New</a>
-</div>
+    <div class="container">
+        <p class="text-right">
+            Hello <?php echo $_SESSION['username']; ?> 
+            <a onclick="return confirm('Are you sure to logout?');" href="logout.php">Logout</a>
+        </p>
 
-<div class="card-header">
-    Add New Manager
-    <a href="add_manager.php" class="btn btn-primary">Add New</a>
-</div>
+        <div class="col">
+            <div class="col-12 bg-secondary text-white">
+                <a href="managers.php" class="text-white">Managers</a>
+                |
+                <a href="employees.php" class="text-white">Employees</a>
+            </div>
+        </div>
 
-<div class="card-header">
-    Edit Employee
-    <a href="edit_employee.php" class="btn btn-primary">Edit</a>
-</div>
+        <div class="main" style="height:300px;">
+            <h1>Welcome to administrative panel of HR Management System.</h1>
+        </div>
 
-<div class="card-header">
-    Delete Employee
-    <a href="delete_employee.php" class="btn btn-primary">Delete</a>
-</div>
-
-<div class="card-header">
-    Edit Manager
-    <a href="edit_manager.php" class="btn btn-primary">Edit</a>
-</div>
-
-<div class="card-header">
-    Delete Manager
-    <a href="delete_manager.php" class="btn btn-primary">Delete</a>
-</div>
-</div>
+        <div class="footer">
+            Copyright @ HR Management System
+        </div>
+    </div>
 </body>
 </html>

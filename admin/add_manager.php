@@ -6,10 +6,10 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
     $name=$_POST['name'];
     $email=$_POST['email'];
     $password=$_POST['password'];
-    $address=$_POST['address'];
+    $contact=$_POST['contact'];
     $dep_id=$_POST['dep_id'];
     
-    $sql="insert into manager set Man_Name='$name', Email='$email', Password='$password', Address='$address', Dep_ID='$dep_id'";
+    $sql="insert into manager set Man_Name='$name', Email='$email', Password='$password', Contact='$contact', Dep_ID='$dep_id'";
     $manStmt=$con->prepare($sql);
     $manStmt->execute();
 
@@ -49,15 +49,15 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                         </div>
                         <div class="form-group">
                             <label for="email">Email:</label>
-                            <input type="text" class="form-control" name="email" id="email">
+                            <input type="email" class="form-control" name="email" id="email">
                         </div>
                         <div class="form-group">
                             <label for="password">Password:</label>
                             <input type="password" class="form-control" name="password" id="password">
                         </div>
                         <div class="form-group">
-                            <label for="address">Address:</label>
-                            <input type="text" class="form-control" name="address" id="address">
+                            <label for="contact">Contact:</label>
+                            <input type="number" class="form-control" name="contact" id="contact">
                         </div>
                         <div class="form-group">
                             <label for="dep_id">Department ID:</label>
