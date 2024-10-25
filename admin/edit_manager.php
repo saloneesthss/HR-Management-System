@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
 <html lang="en">
 <head>
     <title>Administrative Panel - HR Management System</title>
-    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
     <div class="container">
@@ -93,7 +93,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                             id="dep_id">
                         </div>
                         <button type="submit" class="btn btn-primary">Save</button>
-                        <a href="categories.php" class="btn btn-secondary">Cancel</a>
+                        <a href="managers.php" class="btn btn-secondary">Cancel</a>
                     </form>
                 </div>
             </div>

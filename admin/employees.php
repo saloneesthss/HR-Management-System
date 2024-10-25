@@ -2,14 +2,7 @@
 require_once "logincheck.php";
 require_once "../connection.php";
 
-$ManagerID = isset($_GET['ManagerID']) ? (int) $_GET['ManagerID'] : '';
-$where='';
-if (!empty($ManagerId)) {
-    $where="WHERE employees.ManagerID=$ManagerID";
-}
-
-$sql="SELECT manager.Man_Name as manager_name, employees.* FROM employees INNER JOIN manager ON manager.ManagerID=employees.manager_id";
-$stmtEmp=$con->prepare($sql);
+$stmtEmp=$con->prepare("select * from employees");
 $stmtEmp->execute();
 $employees=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -53,7 +46,6 @@ $employees=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
                                 <th>Name</th>
                                 <th>Contact</th>
                                 <th>Email</th>
-                                <th>Manager</th>
                                 <th>Salary</th>
                                 <th>Department ID</th>
                                 <th>Action</th>
@@ -68,10 +60,8 @@ $employees=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
                                 <td><?php echo $employee['name'];?></td>
                                 <td><?php echo $employee['contact'];?></td>
                                 <td><?php echo $employee['email'];?></td>
-                                <td><?php echo $employee['manager_name'];?></td>
                                 <td><?php echo number_format($employee['salary'],2);?></td>
                                 <td><?php echo $employee['dep_id'];?></td>
-                                <td><?php echo $product['status']==1?'Active':'Inactive';?></td>
                                 <td>
                                     <a class="btn btn-primary" href="edit_employee.php?id=<?php echo $employee['id']; ?>">Edit</a> 
                                     <a class="btn btn-danger" onclick="return confirm('Are you sure to delete this employee?')"
