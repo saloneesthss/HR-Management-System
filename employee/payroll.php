@@ -2,10 +2,14 @@
 <html lang="en">
 <head>
     <title>Payroll</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
 </head>
 <body>
-    <div class="section" id="payroll">
+    <div class="container">
+        <p class="text-right">
+            Hello Manager;
+            <a onclick="return confirm('Are you sure to logout?');" href="../logout.php">Logout</a>
+        </p>
         <h2>Payroll</h2>
         <p>View your payroll information and salary details.</p>
     </div>
