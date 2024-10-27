@@ -12,6 +12,8 @@
         </p>
         <h2>Attendance</h2>
         <p>Check your attendance records.</p>
+        
+        <?php require_once "../footer.php"; ?>
     </div>
 </body>
 </html>

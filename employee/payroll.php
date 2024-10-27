@@ -12,6 +12,8 @@
         </p>
         <h2>Payroll</h2>
         <p>View your payroll information and salary details.</p>
+        
+        <?php require_once "../footer.php"; ?>
     </div>
 </body>
 </html>

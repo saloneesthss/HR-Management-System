@@ -11,6 +11,8 @@
     Hello Manager;
     <a onclick="return confirm('Are you sure to logout?');" href="../logout.php">Logout</a>
 </p>
+
+<?php require_once "../footer.php"; ?>
 </div>
 
 </body>

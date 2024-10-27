@@ -11,6 +11,8 @@
             <a onclick="return confirm('Are you sure to logout?');" href="../logout.php">Logout</a>
         </p>
         <h2>Welcome to your profile.</h2>
+
+        <?php require_once "../footer.php"; ?>
     </div>
 </body>
 </html>

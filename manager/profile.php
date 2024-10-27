@@ -62,6 +62,7 @@ $employees=$stmtManager->fetchAll(PDO::FETCH_ASSOC);
                     </table>
                 </div>
             </div>
+            <?php require_once "../footer.php"; ?>
         </div>
     </div>
 </body>

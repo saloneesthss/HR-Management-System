@@ -12,6 +12,8 @@
         </p>
         <h2>Leave Request</h2>
         <p>Manage your leave requests.</p>
+
+        <?php require_once "../footer.php"; ?>
     </div>
 </body>
 </html>

@@ -49,6 +49,7 @@ edit_calendar
 <h3>Leave Subsitution</h3>
 </a>
 </div>
+<?php require_once "../footer.php"; ?>
 </div>
 </body>
 </html>
