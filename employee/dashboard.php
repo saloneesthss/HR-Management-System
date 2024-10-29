@@ -21,37 +21,37 @@ require_once "../logincheck.php"
     
         <div class="sidebar">
             <a href="dashboard.php">
-                <span class="material-symbols-outlined">
+                <!-- <span class="material-symbols-outlined">
                 dashboard
-                </span>
+                </span> -->
                 <h3>Dashboard</h3>
             </a>
 
             <a href="profile.php" class="active">
-                <span class="material-symbols-outlined">
+                <!-- <span class="material-symbols-outlined">
                 person 
-                </span>
+                </span> -->
                 <h3>Profile</h3>
             </a>
 
             <a href="attendance.php">
-                <span class="material-symbols-outlined">
+                <!-- <span class="material-symbols-outlined">
                 calendar_month
-                </span>
+                </span> -->
                 <h3>Attendance</h3>
             </a>
 
             <a href="payroll.php">
-                <span class="material-symbols-outlined">
+                <!-- <span class="material-symbols-outlined">
                 payments
-                </span>
+                </span> -->
                 <h3>Payroll Details</h3>
             </a>
 
             <a href="leave.php">
-                <span class="material-symbols-outlined">
+                <!-- <span class="material-symbols-outlined">
                 event_upcoming
-                </span>
+                </span> -->
                 <h3>Leave Request</h3>
             </a>
         </div>
