@@ -1,11 +1,4 @@
 <?php
-// require_once "logincheck.php";
-// require_once "../connection.php";
-
-// $stmtEmp=$con->prepare("select * from employees");
-// $stmtEmp->execute();
-// $employees=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
-
 require_once "logincheck.php";
 require_once "../connection.php";
 
