@@ -1,8 +1,8 @@
 <?php
-require_once "../logincheck.php";
+require_once "./logincheck.php";
 
 if (!isset($_GET['id'])) {
-    header("Location:employees.php?error=Please provide a valid ID for the manager.");
+    header("Location:employees.php?error=Please provide a valid ID for the employee.");
     die;
 }
 $id=(int) $_GET['id'];
@@ -11,6 +11,12 @@ $sql="select * from `employees` where EmployeeID=$id";
 $stmt=$con->prepare($sql);
 $stmt->execute();
 $employee=$stmt->fetch(PDO::FETCH_ASSOC);
+if(!$employee) {
+    header("Location:employees.php?error=No employees found with the given ID.");
+    die;
+}
+// print_r($employee);
+// die;
 
 if($_SERVER['REQUEST_METHOD']==='POST') {
     //handle login submit
@@ -23,7 +29,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
     $salary=$_POST['salary'];
     $dep_id=$_POST['dep_id'];
     
-    $sql="update employees set EmployeeName='$name', Contact='$contact', Email='$email', Password='$password', Salary='$salary', DepartmentID='$department_id' where EmployeeID=$id";
+    $sql="update employees set Emp_Name='$name', Contact='$contact', Email='$email', Password='$password', Salary='$salary', Dep_ID='$dep_id' where EmployeeID=$id";
     $empStmt=$con->prepare($sql);
     $empStmt->execute();
 
@@ -54,7 +60,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input type="text" 
-                            value="<?php echo $employee['name'] ?>"
+                            value="<?php echo $employee['Emp_Name'] ?>"
                             class="form-control" 
                             name="name" 
                             id="name">
@@ -62,7 +68,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                         <div class="form-group">
                             <label for="dob">DOB:</label>
                             <input type="date" 
-                            value="<?php echo $employee['dob'] ?>"
+                            value="<?php echo $employee['DOB'] ?>"
                             class="form-control" 
                             name="dob" 
                             id="dob">
@@ -71,15 +77,15 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                             <label for="gender">Gender:</label>
                             <select name="gender" id="gender" class="form-control">
                                 <option value="">Select Gender</option>
-                                <option <?php echo $category['gender']=='male'?'selected':'';?> value="male">Male</option>
-                                <option <?php echo $category['gender']=='female'?'selected':'';?> value="female">Female</option>
-                                <option <?php echo $category['gender']=='others'?'selected':'';?> value="others">Others</option>
+                                <option <?php echo $employee['Gender']=='male'?'selected':'';?> value="male">Male</option>
+                                <option <?php echo $employee['Gender']=='female'?'selected':'';?> value="female">Female</option>
+                                <option <?php echo $employee['Gender']=='others'?'selected':'';?> value="others">Others</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="contact">Contact:</label>
                             <input type="number" 
-                            value="<?php echo $employee['contact'] ?>"
+                            value="<?php echo $employee['Contact'] ?>"
                             class="form-control" 
                             name="contact" 
                             id="contact">
@@ -87,7 +93,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                         <div class="form-group">
                             <label for="email">Email:</label>
                             <input type="email" 
-                            value="<?php echo $employee['email'] ?>"
+                            value="<?php echo $employee['Email'] ?>"
                             class="form-control" 
                             name="email" 
                             id="email">
@@ -95,7 +101,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                         <div class="form-group">
                             <label for="password">Password:</label>
                             <input type="password" 
-                            value="<?php echo $employee['password'] ?>"
+                            value="<?php echo $employee['Password'] ?>"
                             class="form-control" 
                             name="password" 
                             id="password">
@@ -103,7 +109,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                         <div class="form-group">
                             <label for="salary">Salary:</label>
                             <input type="number" 
-                            value="<?php echo $employee['salary'] ?>"
+                            value="<?php echo $employee['Salary'] ?>"
                             class="form-control" 
                             name="salary" 
                             id="salary">
@@ -112,13 +118,13 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                             <label for="dep_id">Department ID:</label>
                             <select name="dep_id" id="dep_id" class="form-control">
                                 <option value="">Select Department</option>
-                                <option <?php echo $category['dep_id']=='HR001'?'selected':'';?> value="HR001">HR001</option>
-                                <option <?php echo $category['dep_id']=='HR002'?'selected':'';?> value="HR002">HR002</option>
-                                <option <?php echo $category['dep_id']=='HR003'?'selected':'';?> value="HR003">HR003</option>
+                                <option <?php echo $employee['Dep_ID']=='HR001'?'selected':'';?> value="HR001">HR001</option>
+                                <option <?php echo $employee['Dep_ID']=='HR002'?'selected':'';?> value="HR002">HR002</option>
+                                <option <?php echo $employee['Dep_ID']=='HR003'?'selected':'';?> value="HR003">HR003</option>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Save</button>
-                        <a href="employees.php" class="btn btn-secondary">Cancel</a>
+                        <a href="employees.php" class="btn btn-danger">Cancel</a>
                     </form>
                 </div>
             </div>

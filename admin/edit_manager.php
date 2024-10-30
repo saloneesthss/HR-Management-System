@@ -55,7 +55,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input type="text" 
-                            value="<?php echo $manager['name'] ?>"
+                            value="<?php echo $manager['Man_Name'] ?>"
                             class="form-control" 
                             name="name" 
                             id="name">
@@ -63,7 +63,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                         <div class="form-group">
                             <label for="email">Email:</label>
                             <input type="email" 
-                            value="<?php echo $manager['email'] ?>"
+                            value="<?php echo $manager['Email'] ?>"
                             class="form-control" 
                             name="email" 
                             id="email">
@@ -71,7 +71,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                         <div class="form-group">
                             <label for="password">Password:</label>
                             <input type="password" 
-                            value="<?php echo $manager['password'] ?>"
+                            value="<?php echo $manager['Password'] ?>"
                             class="form-control" 
                             name="password" 
                             id="password">
@@ -79,7 +79,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                         <div class="form-group">
                             <label for="contact">Contact:</label>
                             <input type="number" 
-                            value="<?php echo $manager['contact'] ?>"
+                            value="<?php echo $manager['Contact'] ?>"
                             class="form-control" 
                             name="contact" 
                             id="contact">
@@ -87,13 +87,13 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                         <div class="form-group">
                             <label for="dep_id">Department ID:</label>
                             <input type="text" 
-                            value="<?php echo $manager['dep_id'] ?>"
+                            value="<?php echo $manager['Dep_ID'] ?>"
                             class="form-control" 
                             name="dep_id" 
                             id="dep_id">
                         </div>
                         <button type="submit" class="btn btn-primary">Save</button>
-                        <a href="managers.php" class="btn btn-secondary">Cancel</a>
+                        <a href="managers.php" class="btn btn-danger">Cancel</a>
                     </form>
                 </div>
             </div>

@@ -52,13 +52,13 @@ $managers=$stmtMan->fetchAll(PDO::FETCH_ASSOC);
                             foreach ($managers as $manager) {
                             ?>
                             <tr>
-                                <td><?php echo $manager['id'];?></td>
-                                <td><?php echo $manager['name'];?></td>
-                                <td><?php echo $manager['contact'];?></td>
+                                <td><?php echo $manager['ManagerID'];?></td>
+                                <td><?php echo $manager['Man_Name'];?></td>
+                                <td><?php echo $manager['Contact'];?></td>
                                 <td>
-                                    <a href="edit_manager.php?id=<?php echo $manager['id']; ?>">Edit</a> |
-                                    <a onclick="return confirm('Are you sure to delete this manager?')"
-                                    href="delete_manager.php?id=<?php echo $manager['id']; ?>">Delete</a>
+                                    <a class="btn btn-primary" href="edit_manager.php?id=<?php echo $manager['ManagerID']; ?>">Edit</a> 
+                                    <a class="btn btn-danger" onclick="return confirm('Are you sure to delete this manager?')"
+                                    href="delete_manager.php?id=<?php echo $manager['ManagerID']; ?>">Delete</a>
                                 </td>
                             </tr>
                             <?php } ?>

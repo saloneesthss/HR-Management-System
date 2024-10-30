@@ -1,4 +1,11 @@
 <?php
+// require_once "logincheck.php";
+// require_once "../connection.php";
+
+// $stmtEmp=$con->prepare("select * from employees");
+// $stmtEmp->execute();
+// $employees=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
+
 require_once "logincheck.php";
 require_once "../connection.php";
 
@@ -56,16 +63,16 @@ $employees=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
                             foreach ($employees as $employee) {
                             ?>
                             <tr>
-                                <td><?php echo $employee['id'];?></td>
-                                <td><?php echo $employee['name'];?></td>
-                                <td><?php echo $employee['contact'];?></td>
-                                <td><?php echo $employee['email'];?></td>
-                                <td><?php echo number_format($employee['salary'],2);?></td>
-                                <td><?php echo $employee['dep_id'];?></td>
+                                <td><?php echo $employee['EmployeeID'];?></td>
+                                <td><?php echo $employee['Emp_Name'];?></td>
+                                <td><?php echo $employee['Contact'];?></td>
+                                <td><?php echo $employee['Email'];?></td>
+                                <td><?php echo number_format($employee['Salary'],2);?></td>
+                                <td><?php echo $employee['Dep_ID'];?></td>
                                 <td>
-                                    <a class="btn btn-primary" href="edit_employee.php?id=<?php echo $employee['id']; ?>">Edit</a> 
+                                    <a class="btn btn-primary" href="edit_employee.php?id=<?php echo $employee['EmployeeID']; ?>">Edit</a> 
                                     <a class="btn btn-danger" onclick="return confirm('Are you sure to delete this employee?')"
-                                    href="delete_employee.php?id=<?php echo $employee['id']; ?>">Delete</a>
+                                    href="delete_employee.php?id=<?php echo $employee['EmployeeID']; ?>">Delete</a>
                                 </td>
                             </tr>
                             <?php } ?>

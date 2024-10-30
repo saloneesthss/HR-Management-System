@@ -32,7 +32,6 @@ $employees=$stmtManager->fetchAll(PDO::FETCH_ASSOC);
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Password</th>
                                 <th>Contact</th>
                             </tr>
                         </thead>
@@ -41,11 +40,10 @@ $employees=$stmtManager->fetchAll(PDO::FETCH_ASSOC);
                             foreach ($employees as $employee) {
                             ?>
                             <tr>
-                                <td><?php echo $employee['id']; ?></td>
-                                <td><?php echo $employee['name']; ?></td>
-                                <td><?php echo $employee['email']; ?></td>
-                                <td><?php echo $employee['password']; ?></td>
-                                <td><?php echo $employee['contact']; ?></td>
+                                <td><?php echo $employee['EmployeeID']; ?></td>
+                                <td><?php echo $employee['Emp_Name']; ?></td>
+                                <td><?php echo $employee['Email']; ?></td>
+                                <td><?php echo $employee['Contact']; ?></td>
                             </tr>
                             <?php } ?>
                         </tbody>
