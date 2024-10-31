@@ -14,8 +14,9 @@ $employees=$stmtManager->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container">
     <?php require_once "sidebar.php"; ?>
+
+    <div class="container">
 
         <p class="text-right">
             Hello Manager;

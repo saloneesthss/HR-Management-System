@@ -1,12 +1,49 @@
-<div class="sidenav">
-	<h2 style="font-family:Arial; color:white; text-align:center;"> MANAGER  </h2>
-	<a href="dashboard.php">Dashboard</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Manager - Sidebar</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+<div class="sidebar">
+	<h2> MANAGER  </h2>
+	
+    <ul style="list-style:none;">
+        <li>
+            <a href="dashboard.php">
+                <i class='bx bxs-dashboard'>Dashboard</i>
+            </a>
+        </li>
 
-	<a href="profile.php">Profile</a>
-			
-    <a href="leave_approve.php">Leave Requests</a>
-			
-    <a href="leave_substitute.php">Leave Substitution</a>
-       
-    <a href="employees.php">Employees</a>
+        <li>
+            <a href="profile.php">
+                <i class='bx bx-user-circle'>Profile</i>
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="leave_approve.php">
+                <i class='bx bx-calendar-event'>Leave Requests</i>
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="leave_substitute.php">
+                <i class='bx bx-calendar-check'>Leave Substitution</i>
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="employees.php">
+                <i class='bx bxs-user-account'>Employees</i>
+                
+            </a>
+        </li>
+    </ul>
 </div>
+</body>
+</html>

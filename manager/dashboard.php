@@ -57,14 +57,14 @@ edit_calendar
 <html>
 
 <head>
-<link rel="stylesheet" type="text/css" href="nav2.css">
+<link rel="stylesheet" type="text/css" href="style.css">
 <title>
     Manager Dashboard
 </title>
 </head>
 
 <body>
-    <?php require_once "sidebar.php"; ?>
+	<?php require_once "sidebar.php"; ?>
 
 	<div class="topnav">        
 		<a onclick="return confirm('Are you sure to logout?');" 
@@ -95,22 +95,4 @@ edit_calendar
 	<?php require_once "../footer.php"; ?>
 
 </body>
-
-<script>
-	var dropdown = document.getElementsByClassName("dropdown-btn");
-	var i;
-
-	for (i = 0; i < dropdown.length; i++) {
-	  dropdown[i].addEventListener("click", function() {
-	  this.classList.toggle("active");
-	  var dropdownContent = this.nextElementSibling;
-	  if (dropdownContent.style.display === "block") {
-	  dropdownContent.style.display = "none";
-	  } else {
-	  dropdownContent.style.display = "block";
-	  }
-	  });
-	}
-</script>
-
 </html>
