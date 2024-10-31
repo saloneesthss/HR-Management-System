@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="sidebar">
-	<h2> MANAGER  </h2>
+	<h2> EMPLOYEE  </h2>
 	
     <ul>
         <li>
@@ -25,23 +25,23 @@
         </li>
         
         <li>
-            <a href="leave_approve.php">
-                <i class='bx bx-calendar-event'></i>                
-                Leave Requests
+            <a href="leave.php">
+                <i class='bx bx-calendar-event'></i>
+                Leave Request
             </a>
         </li>
         
         <li>
-            <a href="leave_substitute.php">
-                <i class='bx bx-calendar-check'></i>
-                Leave Substitution
-            </a>
+            <a href="payroll.php">
+                <i class='bx bx-wallet-alt'></i>
+                Payroll Details
+            </a>    
         </li>
         
         <li>
-            <a href="employees.php">
-                <i class='bx bxs-user-account'></i>
-                Employees
+            <a href="attendance.php">
+                <i class='bx bx-user-check'></i>
+                Attendance
             </a>
         </li>
     </ul>

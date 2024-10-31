@@ -73,7 +73,7 @@ edit_calendar
 	
 	<center>
 	<div class="head">
-	<h2> ADMIN DASHBOARD </h2>
+	<h2> MANAGER DASHBOARD </h2>
 	</div>
 	</center>
 	
