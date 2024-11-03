@@ -21,6 +21,8 @@ require_once "logincheck.php";
                 <a href="managers.php" class="text-white">Managers</a>
                 |
                 <a href="employees.php" class="text-white">Employees</a>
+                |
+                <a href="departments.php" class="text-white">Departments</a>
             </div>
         </div>
 
