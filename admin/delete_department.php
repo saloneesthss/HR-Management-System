@@ -1,12 +1,12 @@
 <?php
 require_once "logincheck.php";
 
-if (!isset($_GET['id'])) {
+if (!isset($_GET['dep_id'])) {
     header("Location: departments.php?error=No department found with the given ID.");
     die;
 }
 
-$id=(int) $_GET['id'];
+$id=(int) $_GET['dep_id'];
 
 $sql="delete from `department` where Dep_ID=$id";
 $stmt=$con->prepare($sql);

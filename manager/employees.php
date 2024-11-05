@@ -2,7 +2,7 @@
 require_once "../logincheck.php";
 require_once "../connection.php";
 
-$stmtManager=$con->prepare("select * from employees");
+$stmtManager=$con->prepare("select * from employees where Dep_ID='HR003'");
 $stmtManager->execute();
 $employees=$stmtManager->fetchAll(PDO::FETCH_ASSOC);
 ?>
