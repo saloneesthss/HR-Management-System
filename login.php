@@ -86,13 +86,13 @@ if (isset($_SESSION['rememberme']) && !empty($_SESSION['rememberme'])) {
         <form action="" method="POST">
             <div class="mb-3">
               <label for="email" class="form-label">Email address</label>
-              <input required type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
+              <input required type="email" placeholder="Email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
               <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div> <br>
             
             <div class="mb-3">
               <label for="password" class="form-label">Password</label>
-              <input required type="password" name="password" class="form-control" id="password">
+              <input required type="password" placeholder="Password" name="password" class="form-control" id="password">
             </div> <br>
 
             <div class="form-group">

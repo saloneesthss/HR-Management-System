@@ -14,11 +14,6 @@ require_once "../logincheck.php"
 
 <body>
 	<?php require_once "sidebar.php"; ?>
-
-	<div class="topnav">        
-		<a onclick="return confirm('Are you sure to logout?');" 
-        href="logout.php">Logout</a>
-	</div>
 	
 	<center>
 	<div class="head">

@@ -56,7 +56,7 @@ $departments=$stmtDep->fetchAll(PDO::FETCH_ASSOC);
                                 <td><?php echo $department['Dep_Name'];?></td>
                                 <td><?php echo $department['Location'];?></td>
                                 <td>
-                                    <a class="btn btn-primary" href="edit_department.php?id=<?php echo $department['Dep_ID']; ?>">Edit</a> 
+                                    <a class="btn btn-primary" href="edit_department.php?id=<?php echo $department['Id']; ?>">Edit</a> 
                                     <a class="btn btn-danger" onclick="return confirm('Are you sure to delete this department?')"
                                     href="delete_department.php?id=<?php echo $department['Dep_ID']; ?>">Delete</a>
                                 </td>

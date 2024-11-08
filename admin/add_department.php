@@ -12,7 +12,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
     $manStmt->execute();
 
     //redirect the user to department
-    header("Location:dashboard.php?success=Department added successfully.");
+    header("Location:departments.php?success=Department added successfully.");
     die;
 }
 ?>
@@ -55,7 +55,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                         </div>
                         
                         <button type="submit" class="btn btn-primary">Save</button>
-                        <a href="add_department.php" class="btn btn-danger">Cancel</a>
+                        <a href="departments.php" class="btn btn-danger">Cancel</a>
                     </form>
                 </div>
             </div>

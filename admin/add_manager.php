@@ -14,7 +14,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
     $manStmt->execute();
 
     //redirect the user to manager
-    header("Location:dashboard.php?success=Manager added successfully.");
+    header("Location:managers.php?success=Manager added successfully.");
     die;
 }
 ?>
@@ -65,7 +65,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                         </div>
 
                         <button type="submit" class="btn btn-primary">Save</button>
-                        <a href="add_manager.php" class="btn btn-danger">Cancel</a>
+                        <a href="managers.php" class="btn btn-danger">Cancel</a>
                     </form>
                 </div>
             </div>

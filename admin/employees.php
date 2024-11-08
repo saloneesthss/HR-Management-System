@@ -61,7 +61,7 @@ $employees=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
                                 <td><?php echo $employee['Contact'];?></td>
                                 <td><?php echo $employee['Email'];?></td>
                                 <td><?php echo number_format($employee['Salary'],2);?></td>
-                                <td><?php echo $employee['Dep_ID'];?></td>
+                                <td><?php echo $employee['Dep_Name'];?></td>
                                 <td>
                                     <a class="btn btn-primary" href="edit_employee.php?id=<?php echo $employee['EmployeeID']; ?>">Edit</a> 
                                     <a class="btn btn-danger" onclick="return confirm('Are you sure to delete this employee?')"

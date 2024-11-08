@@ -7,7 +7,7 @@ if (!isset($_GET['id'])) {
 }
 $id=(int) $_GET['id'];
 
-$sql="select * from `department` where Dep_ID=$id";
+$sql="select * from `department` where Id=$id";
 $stmt=$con->prepare($sql);
 $stmt->execute();
 $department=$stmt->fetch(PDO::FETCH_ASSOC);
@@ -22,7 +22,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
     $name=$_POST['name'];
     $location=$_POST['location'];
     
-    $sql="update department set Dep_Name='$name', Location='$location', Dep_ID='$dep_id' where Dep_ID='$dep_id'";
+    $sql="update department set Dep_ID='$dep_id', Dep_Name='$name', Location='$location' where Id=$id";
     $depStmt=$con->prepare($sql);
     $depStmt->execute();
 
@@ -59,7 +59,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                             id="dep_id">
                         </div>
                         <div class="form-group">
-                            <label for="name">Department Name:</label>
+                            <label for="name">Name:</label>
                             <input type="text" 
                             value="<?php echo $department['Dep_Name'] ?>"
                             class="form-control" 
@@ -68,7 +68,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                         </div>
                         <div class="form-group">
                             <label for="location">Location:</label>
-                            <input type="location" 
+                            <input type="text" 
                             value="<?php echo $department['Location'] ?>"
                             class="form-control" 
                             name="location" 

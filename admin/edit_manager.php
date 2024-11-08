@@ -24,7 +24,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
     $contact=$_POST['contact'];
     $dep_id=$_POST['dep_id'];
     
-    $sql="update manager set Man_Name='$name', Email='$email', password='$password', Contact='$contact', Dep_ID='$dep_id' where ManagerID=$id";
+    $sql="update manager set Man_Name='$name', Email='$email', Password='$password', Contact='$contact', Dep_ID='$dep_id' where ManagerID=$id";
     $manStmt=$con->prepare($sql);
     $manStmt->execute();
 

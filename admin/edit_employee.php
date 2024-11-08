@@ -18,6 +18,10 @@ if(!$employee) {
 // print_r($employee);
 // die;
 
+$stmtEmp=$con->prepare("select * from department");
+$stmtEmp->execute();
+$departments=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
+
 if($_SERVER['REQUEST_METHOD']==='POST') {
     //handle login submit
     $name=$_POST['name'];
@@ -29,7 +33,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
     $salary=$_POST['salary'];
     $dep_id=$_POST['dep_id'];
     
-    $sql="update employees set Emp_Name='$name', Contact='$contact', Email='$email', Password='$password', Salary='$salary', Dep_ID='$dep_id' where EmployeeID=$id";
+    $sql="update employees set Emp_Name='$name', DOB='$dob', Gender='$gender', Contact='$contact', Email='$email', Password='$password', Salary='$salary', Dep_ID='$dep_id' where EmployeeID=$id";
     $empStmt=$con->prepare($sql);
     $empStmt->execute();
 
@@ -115,14 +119,17 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                             id="salary">
                         </div>
                         <div class="form-group">
-                            <label for="dep_id">Department ID:</label>
+                            <label for="dep_id">Department:</label>
                             <select name="dep_id" id="dep_id" class="form-control">
                                 <option value="">Select Department</option>
-                                <option <?php echo $employee['Dep_ID']=='HR001'?'selected':'';?> value="HR001">HR001</option>
-                                <option <?php echo $employee['Dep_ID']=='HR002'?'selected':'';?> value="HR002">HR002</option>
-                                <option <?php echo $employee['Dep_ID']=='HR003'?'selected':'';?> value="HR003">HR003</option>
+                                <?php foreach ($departments as $department) { ?>
+                                    <option <?php echo $employee['Dep_ID']==$department['Dep_ID']?'selected':'';?> value="<?php echo $department['Dep_ID']; ?>">
+                                        <?php echo $department['Dep_Name']?>
+                                    </option>
+                                <?php } ?>
                             </select>
                         </div>
+
                         <button type="submit" class="btn btn-primary">Save</button>
                         <a href="employees.php" class="btn btn-danger">Cancel</a>
                     </form>

@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
     $manStmt->execute();
 
     //redirect the user to employee
-    header("Location:dashboard.php?success=Employee added successfully.");
+    header("Location:employees.php?success=Employee added successfully.");
     die;
 }
 ?>
@@ -80,17 +80,19 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                             <input type="number" class="form-control" name="salary" id="salary">
                         </div>
                         <div class="form-group">
-                            <label for="status">Department ID:</label>
+                            <label for="dep_id">Department ID:</label>
                             <select name="dep_id" id="dep_id" class="form-control">
                                 <option value="">Select Department</option>
-                                <option value="HR001">HR001</option>
-                                <option value="HR002">HR002</option>
-                                <option value="HR003">HR003</option>
+                                <?php foreach ($departments as $department) { ?>
+                                    <option value="<?php echo $department['Id']; ?>">
+                                        <?php echo $department['Dep_ID']?>
+                                    </option>
+                                <?php } ?>
                             </select>
                         </div>
 
                         <button type="submit" class="btn btn-primary">Save</button>
-                        <a href="add_employee.php" class="btn btn-danger">Cancel</a>
+                        <a href="employees.php" class="btn btn-danger">Cancel</a>
                     </form>
                 </div>
             </div>
