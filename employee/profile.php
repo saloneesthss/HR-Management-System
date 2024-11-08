@@ -5,163 +5,166 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
 <style>
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+  margin: 0;
+  padding-left: 250;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: #f5f7fa;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #e0f7ff, #003d73);
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+.dashboard {
+  display: flex;
+  width: 90%;
+  max-width: 1200px;
+  height: 80vh;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.menu {
-    align-self: flex-start;
-    margin-bottom: 20px;
-    font-weight: bold;
-    cursor: pointer;
+.sidebar {
+  width: 20%;
+  background: #003d73;
+  color: #fff;
+  padding: 20px;
 }
 
-.profile {
-    display: flex;
-    max-width: 800px;
-    width: 100%;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
+.sidebar .profile {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-.profile-picture {
-    flex: 1;
-    background-color: #e6e9ef;
-    padding: 20px;
-    text-align: center;
+.sidebar .profile img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
 }
 
-.profile-picture img {
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    margin-bottom: 10px;
+.sidebar h2 {
+  font-size: 1.2em;
+  font-weight: normal;
 }
 
-.profile-picture h2 {
-    font-size: 18px;
-    margin: 10px 0;
+.sidebar .nav a {
+  display: block;
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 5px;
+  transition: background 0.3s;
 }
 
-.profile-picture p {
-    font-size: 14px;
-    color: #666;
+.sidebar .nav a:hover {
+  background: #00509e;
+  border-radius: 5px;
 }
 
-.profile-info {
-    flex: 2;
-    padding: 20px;
+.content {
+  width: 80%;
+  padding: 20px;
+  overflow-y: auto;
 }
 
-.profile-info h3 {
-    margin-bottom: 10px;
-    font-size: 16px;
-    color: #333;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 5px;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.profile-info table {
-    width: 100%;
-    margin-top: 10px;
+header h1 {
+  font-size: 1.5em;
 }
 
-.profile-info table tr td {
-    padding: 8px 0;
-    color: #555;
+.main-info {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
 }
 
-.profile-info table tr td:first-child {
-    font-weight: bold;
-    color: #333;
-    width: 40%;
+.profile-info, .basic-info {
+  background: #f3f3f3;
+  padding: 15px;
+  border-radius: 10px;
+  width: 50%;
 }
 
-.actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
+.profile-info h2 {
+  margin-bottom: 10px;
+  font-size: 1.3em;
 }
 
-.actions button {
-    padding: 10px 15px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
+.events {
+  margin-top: 20px;
+  background: #f3f3f3;
+  padding: 15px;
+  border-radius: 10px;
 }
 
-.actions button:hover {
-    background-color: #0056b3;
+.events h3 {
+  margin-bottom: 10px;
 }
-
 </style>
 </head>
 <body>
     <?php require_once "sidebar.php"; ?>
 
-    <div class="container">
-        <p class="text-right">
-            Hello;
-            <a onclick="return confirm('Are you sure to logout?');" href="../logout.php">Logout</a>
-        </p>
-
-        <div class="menu">Menu</div>
-        <div class="profile">
-            <div class="profile-picture">
-                <img src="https://via.placeholder.com/150" alt="Profile Picture">
-                <h2>DAVID BECKHAM</h2>
-                <p>Email: davidbeckham@gmail.com</p>
-                <p>ID no.: 00011</p>
-            </div>
-            <div class="profile-info">
-                <h3>Personal Information</h3>
-                <table>
-                    <tr><td>Civil Status</td><td>SINGLE</td></tr>
-                    <tr><td>Age</td><td>28</td></tr>
-                    <tr><td>Height (cm)</td><td>176</td></tr>
-                    <tr><td>Weight (pounds)</td><td>124</td></tr>
-                    <tr><td>Gender</td><td>MALE</td></tr>
-                    <tr><td>Date of Birth</td><td>January 07, 1991</td></tr>
-                    <tr><td>Place of Birth</td><td>LONDON, UNITED KINGDOM</td></tr>
-                    <tr><td>Home Address</td><td>BRIGHTON, LONDON, UNITED KINGDOM</td></tr>
-                    <tr><td>National ID</td><td>000-100101-0121</td></tr>
-                </table>
-                <h3>Designation</h3>
-                <table>
-                    <tr><td>Company</td><td>APPLE CORPORATION</td></tr>
-                    <tr><td>Department</td><td>EXECUTIVE</td></tr>
-                    <tr><td>Position</td><td>CHIEF EXECUTIVE OFFICER</td></tr>
-                    <tr><td>Leave Privilege</td><td>VACATION LEAVE, SICK LEAVE, BIRTHDAY LEAVE</td></tr>
-                    <tr><td>Employment Type</td><td>Regular</td></tr>
-                    <tr><td>Employment Status</td><td>Active</td></tr>
-                    <tr><td>Official Start Date</td><td>January 01, 2024</td></tr>
-                    <tr><td>Date Regularized</td><td>December 31, 2024</td></tr>
-                </table>
-            </div>
+    <div class="container" style="padding-left:250px; padding-top:100px;">
+     <div class="profile">
+      <main class="content">
+       <header>
+        <h1>Profile</h1>
+        <p>July 24, 2020, 4:30 PM</p>
+       </header>
+       <section class="main-info">
+        <!-- Profile Info -->
+        <div class="profile-info">
+          <img src="profile.jpg" alt="Profile Picture">
+          <h2>Helen Voizhicki</h2>
+          <p>Role: User | Position: Head of HR Department</p>
+          <p>Email: helen.voizhicki@gmail.com</p>
+          <p>Phone: +1 707 255 843</p>
         </div>
-        <div class="actions">
-            <button>Quick Access</button>
-            <button>Return</button>
+        <!-- Basic Information -->
+        <div class="basic-info">
+          <h3>Basic Information</h3>
+          <p>Hire Date: August 26, 2019</p>
+          <p>Worked for: 3 Years, 1 Month</p>
+          <p>Employee ID: #956</p>
+          <p>SSN: XXX-XX-5861</p>
         </div>
+      </section>
+      <!-- Upcoming Events -->
+      <section class="events">
+        <h3>Upcoming Events</h3>
+        <p>Design Review - 9:00 AM - 10:00 AM</p>
+      </section>
+    </main>
+  </div>
 
         <?php require_once "../footer.php"; ?>
     </div>
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+  const dateElement = document.querySelector("header p");
+
+  function updateTime() {
+    const now = new Date();
+    dateElement.textContent = now.toLocaleString();
+  }
+
+  setInterval(updateTime, 1000);
+});
+</script>
 </html>
+

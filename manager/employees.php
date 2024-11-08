@@ -2,38 +2,57 @@
 require_once "../logincheck.php";
 require_once "../connection.php";
 
-$stmtManager=$con->prepare("select * from employees where Dep_ID='HR003'");
-$stmtManager->execute();
-$employees=$stmtManager->fetchAll(PDO::FETCH_ASSOC);
+$depId = isset($_GET['Dep_Id']) ? $_GET['Dep_Id'] : '';
+$where='';
+if (!empty($depId)) {
+    $where="WHERE employees.Dep_Id=manager.Dep_Id and employees.Dep_Id=$depId";
+}
+
+$sql="SELECT department.Dep_Name as Dep_Name, employees.* FROM employees INNER JOIN department ON department.Dep_ID=employees.Dep_Id $where";
+$stmtEmp=$con->prepare($sql);
+$stmtEmp->execute();
+$employees=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Profile of Employees</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Administrative Panel - HR Management System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
 </head>
 <body>
     <?php require_once "sidebar.php"; ?>
 
-    <div class="container">
-
-        <p class="text-right">
-            Hello Manager;
-            <a onclick="return confirm('Are you sure to logout?');" href="../logout.php">Logout</a>
-        </p>
-
+    <div class="container" style="padding-left:250px; padding-top:100px;">
+       
         <div class="main">
-            <h2>Profile of Employees</h2>
+            <h2>Employees</h2>
             <div class="card">
-                <div class="card-body">
+                <div class="card-header">
+                    Employee Listing
+                    <a href="add_employee.php" class="btn btn-primary">Add New</a>
+                </div>
+                <div class="card-body p-0">
+                    <?php if(isset($_GET['error'])) { ?>
+                    <div class="alert alert-danger">
+                        <?php echo $_GET['error']; ?>
+                    </div>
+                    <?php } ?>
+                    <?php if(isset($_GET['success'])) { ?>
+                    <div class="alert alert-success">
+                        <?php echo $_GET['success']; ?>
+                    </div>
+                    <?php } ?>
+
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Email</th>
                                 <th>Contact</th>
+                                <th>Email</th>
+                                <th>Salary</th>
+                                <th>Department</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -41,18 +60,20 @@ $employees=$stmtManager->fetchAll(PDO::FETCH_ASSOC);
                             foreach ($employees as $employee) {
                             ?>
                             <tr>
-                                <td><?php echo $employee['EmployeeID']; ?></td>
-                                <td><?php echo $employee['Emp_Name']; ?></td>
-                                <td><?php echo $employee['Email']; ?></td>
-                                <td><?php echo $employee['Contact']; ?></td>
+                                <td><?php echo $employee['EmployeeID'];?></td>
+                                <td><?php echo $employee['Emp_Name'];?></td>
+                                <td><?php echo $employee['Contact'];?></td>
+                                <td><?php echo $employee['Email'];?></td>
+                                <td><?php echo number_format($employee['Salary'],2);?></td>
+                                <td><?php echo $employee['Dep_Name'];?></td>
                             </tr>
                             <?php } ?>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <?php require_once "../footer.php"; ?>
         </div>
+
     </div>
 </body>
 </html>
