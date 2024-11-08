@@ -1,6 +1,10 @@
 <?php
 require_once "logincheck.php";
 
+$stmtEmp=$con->prepare("select * from department");
+$stmtEmp->execute();
+$departments=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
+
 if($_SERVER['REQUEST_METHOD']==='POST') {
     //handle login submit
     $name=$_POST['name'];
@@ -10,11 +14,11 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
     $email=$_POST['email'];
     $password=$_POST['password'];
     $salary=$_POST['salary'];
-    $dep_id=$_POST['dep_id'];
+    $Dep_Id=$_POST['Dep_Id'];
     
-    $sql="insert into employees set Emp_Name='$name', DOB='$dob', Gender='$gender', Contact='$contact', Email='$email', Password='$password', Salary='$salary', Dep_ID='$dep_id'";
-    $manStmt=$con->prepare($sql);
-    $manStmt->execute();
+    $sql="insert into employees set Emp_Name='$name', DOB='$dob', Gender='$gender', Contact='$contact', Email='$email', Password='$password', Salary='$salary', Dep_Id='$Dep_Id'";
+    $depStmt=$con->prepare($sql);
+    $depStmt->execute();
 
     //redirect the user to employee
     header("Location:employees.php?success=Employee added successfully.");
@@ -80,12 +84,12 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                             <input type="number" class="form-control" name="salary" id="salary">
                         </div>
                         <div class="form-group">
-                            <label for="dep_id">Department ID:</label>
-                            <select name="dep_id" id="dep_id" class="form-control">
+                            <label for="Dep_Id">Department ID:</label>
+                            <select name="Dep_Id" id="Dep_Id" class="form-control">
                                 <option value="">Select Department</option>
                                 <?php foreach ($departments as $department) { ?>
-                                    <option value="<?php echo $department['Id']; ?>">
-                                        <?php echo $department['Dep_ID']?>
+                                    <option value="<?php echo $department['Dep_Id']; ?>">
+                                        <?php echo $department['Dep_Name']?>
                                     </option>
                                 <?php } ?>
                             </select>

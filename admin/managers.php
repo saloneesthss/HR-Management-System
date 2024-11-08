@@ -2,7 +2,14 @@
 require_once "logincheck.php";
 require_once "../connection.php";
 
-$stmtMan=$con->prepare("select * from manager");
+$depId = isset($_GET['Dep_Id']) ? $_GET['Dep_Id'] : '';
+$where='';
+if (!empty($depId)) {
+    $where="WHERE manager.Dep_Id=$depId";
+}
+
+$sql="SELECT department.Dep_Name as Dep_Name, manager.* FROM manager INNER JOIN department ON department.Dep_ID=manager.Dep_Id $where";
+$stmtMan=$con->prepare($sql);
 $stmtMan->execute();
 $managers=$stmtMan->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -43,7 +50,9 @@ $managers=$stmtMan->fetchAll(PDO::FETCH_ASSOC);
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
+                                <th>Email</th>
                                 <th>Contact</th>
+                                <th>Department</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -54,7 +63,9 @@ $managers=$stmtMan->fetchAll(PDO::FETCH_ASSOC);
                             <tr>
                                 <td><?php echo $manager['ManagerID'];?></td>
                                 <td><?php echo $manager['Man_Name'];?></td>
+                                <td><?php echo $manager['Email'];?></td>
                                 <td><?php echo $manager['Contact'];?></td>
+                                <td><?php echo $manager['Dep_Name'];?></td>
                                 <td>
                                     <a class="btn btn-primary" href="edit_manager.php?id=<?php echo $manager['ManagerID']; ?>">Edit</a> 
                                     <a class="btn btn-danger" onclick="return confirm('Are you sure to delete this manager?')"

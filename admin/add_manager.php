@@ -1,17 +1,21 @@
 <?php
 require_once "logincheck.php";
 
+$stmtEmp=$con->prepare("select * from department");
+$stmtEmp->execute();
+$departments=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
+
 if($_SERVER['REQUEST_METHOD']==='POST') {
     //handle login submit
     $name=$_POST['name'];
     $email=$_POST['email'];
     $password=$_POST['password'];
     $contact=$_POST['contact'];
-    $dep_id=$_POST['dep_id'];
+    $Dep_Id=$_POST['Dep_Id'];
     
-    $sql="insert into manager set Man_Name='$name', Email='$email', Password='$password', Contact='$contact', Dep_ID='$dep_id'";
-    $manStmt=$con->prepare($sql);
-    $manStmt->execute();
+    $sql="insert into manager set Man_Name='$name', Email='$email', Password='$password', Contact='$contact', Dep_Id='$Dep_Id'";
+    $depStmt=$con->prepare($sql);
+    $depStmt->execute();
 
     //redirect the user to manager
     header("Location:managers.php?success=Manager added successfully.");
@@ -60,8 +64,15 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                             <input type="number" class="form-control" name="contact" id="contact">
                         </div>
                         <div class="form-group">
-                            <label for="dep_id">Department ID:</label>
-                            <input type="text" class="form-control" name="dep_id" id="dep_id">
+                            <label for="Dep_Id">Department ID:</label>
+                            <select name="Dep_Id" id="Dep_Id" class="form-control">
+                                <option value="">Select Department</option>
+                                <?php foreach ($departments as $department) { ?>
+                                    <option value="<?php echo $department['Id']; ?>">
+                                        <?php echo $department['Dep_Name']?>
+                                    </option>
+                                <?php } ?>
+                            </select>
                         </div>
 
                         <button type="submit" class="btn btn-primary">Save</button>

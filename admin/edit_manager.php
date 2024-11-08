@@ -16,15 +16,19 @@ if(!$manager) {
     die;
 }
 
+$stmtEmp=$con->prepare("select * from department");
+$stmtEmp->execute();
+$departments=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
+
 if($_SERVER['REQUEST_METHOD']==='POST') {
     //handle login submit
     $name=$_POST['name'];
     $email=$_POST['email'];
     $password=$_POST['password'];
     $contact=$_POST['contact'];
-    $dep_id=$_POST['dep_id'];
+    $Dep_Id=$_POST['Dep_Id'];
     
-    $sql="update manager set Man_Name='$name', Email='$email', Password='$password', Contact='$contact', Dep_ID='$dep_id' where ManagerID=$id";
+    $sql="update manager set Man_Name='$name', Email='$email', Password='$password', Contact='$contact', Dep_Id='$Dep_Id' where ManagerID=$id";
     $manStmt=$con->prepare($sql);
     $manStmt->execute();
 
@@ -85,13 +89,17 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                             id="contact">
                         </div>
                         <div class="form-group">
-                            <label for="dep_id">Department ID:</label>
-                            <input type="text" 
-                            value="<?php echo $manager['Dep_ID'] ?>"
-                            class="form-control" 
-                            name="dep_id" 
-                            id="dep_id">
+                            <label for="Dep_Id">Department:</label>
+                            <select name="Dep_Id" id="Dep_Id" class="form-control">
+                                <option value="">Select Department</option>
+                                <?php foreach ($departments as $department) { ?>
+                                    <option <?php echo $manager['Dep_Id']==$department['Dep_ID']?'selected':'';?> value="<?php echo $department['Dep_ID']; ?>">
+                                        <?php echo $department['Dep_Name']?>
+                                    </option>
+                                <?php } ?>
+                            </select>
                         </div>
+
                         <button type="submit" class="btn btn-primary">Save</button>
                         <a href="managers.php" class="btn btn-danger">Cancel</a>
                     </form>

@@ -31,9 +31,9 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
     $email=$_POST['email'];
     $password=$_POST['password'];
     $salary=$_POST['salary'];
-    $dep_id=$_POST['dep_id'];
+    $Dep_Id=$_POST['Dep_Id'];
     
-    $sql="update employees set Emp_Name='$name', DOB='$dob', Gender='$gender', Contact='$contact', Email='$email', Password='$password', Salary='$salary', Dep_ID='$dep_id' where EmployeeID=$id";
+    $sql="update employees set Emp_Name='$name', DOB='$dob', Gender='$gender', Contact='$contact', Email='$email', Password='$password', Salary='$salary', Dep_Id='$Dep_Id' where EmployeeID=$id";
     $empStmt=$con->prepare($sql);
     $empStmt->execute();
 
@@ -119,11 +119,11 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                             id="salary">
                         </div>
                         <div class="form-group">
-                            <label for="dep_id">Department:</label>
-                            <select name="dep_id" id="dep_id" class="form-control">
+                            <label for="Dep_Id">Department:</label>
+                            <select name="Dep_Id" id="Dep_Id" class="form-control">
                                 <option value="">Select Department</option>
                                 <?php foreach ($departments as $department) { ?>
-                                    <option <?php echo $employee['Dep_ID']==$department['Dep_ID']?'selected':'';?> value="<?php echo $department['Dep_ID']; ?>">
+                                    <option <?php echo $employee['Dep_Id']==$department['Dep_ID']?'selected':'';?> value="<?php echo $department['Dep_ID']; ?>">
                                         <?php echo $department['Dep_Name']?>
                                     </option>
                                 <?php } ?>

@@ -2,7 +2,14 @@
 require_once "logincheck.php";
 require_once "../connection.php";
 
-$stmtEmp=$con->prepare("select * from employees");
+$depId = isset($_GET['Dep_Id']) ? $_GET['Dep_Id'] : '';
+$where='';
+if (!empty($depId)) {
+    $where="WHERE employees.Dep_Id=$depId";
+}
+
+$sql="SELECT department.Dep_Name as Dep_Name, employees.* FROM employees INNER JOIN department ON department.Dep_ID=employees.Dep_Id $where";
+$stmtEmp=$con->prepare($sql);
 $stmtEmp->execute();
 $employees=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -47,7 +54,7 @@ $employees=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
                                 <th>Contact</th>
                                 <th>Email</th>
                                 <th>Salary</th>
-                                <th>Department ID</th>
+                                <th>Department</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
