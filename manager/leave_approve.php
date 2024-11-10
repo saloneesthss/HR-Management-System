@@ -66,12 +66,12 @@ $leaves=$stmtLeave->fetchAll(PDO::FETCH_ASSOC);
                                 <td><?php echo $leave['End date'];?></td>
                                 <td><?php echo $leave['Reason'];?></td>
                                 <td>
-                                <select name="status" id="status" class="form-control">
-                                    <option value="">Select Status</option>
-                                    <option value="approved">Approve</option>
-                                    <option value="pending">Pending</option>
-                                    <option value="rejected">Reject</option>
-                                </select>
+                                    <select name="status" id="status" class="form-control">
+                                        <option value="">Select Status</option>
+                                        <option value="approved">Approve</option>
+                                        <option value="pending">Pending</option>
+                                        <option value="rejected">Reject</option>
+                                    </select>
                                 </td>
                                 <td><?php echo $leave['Approved by'];?></td>
                                 <td><button type="submit" class="btn btn-success">Submit</a></td>

@@ -1,5 +1,6 @@
 <?php
 require_once "../logincheck.php";
+require_once "sidebar.php";
 
 $stmtEmp=$con->prepare("select * from employees");
 $stmtEmp->execute();
@@ -31,7 +32,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="padding-left:250px; padding-top:100px;">
 
         <div class="main">
             <h2>Make Leave Request</h2>
@@ -74,7 +75,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                         </div>
                         <div class="form-group">
                             <label for="reason">Reason:</label> <br>
-                            <textarea name="reason" id="reason" cols="160" rows="4"></textarea>
+                            <textarea name="reason" id="reason" cols="127" rows="4"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="status">Status:</label>

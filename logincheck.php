@@ -11,5 +11,5 @@ require_once "../connection.php";
 //     header("Location:dashboard.php?error=You are not logged in, please login first.");
 //     die;
 // }
- 
+// else { }
 ?>
