@@ -6,7 +6,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-<div class="sidebar" style="background-color:linear-gradient(124,234,156);">
+<div class="sidebar">
 	<h2> MANAGER  </h2>
 	
     <ul>
@@ -49,7 +49,7 @@
 
 <div class="topnav">        
 	<a onclick="return confirm('Are you sure to logout?');" 
-    href="logout.php">Logout</a>
+    href="../logout.php">Logout</a>
 </div>
 </body>
 </html>

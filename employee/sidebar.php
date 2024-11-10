@@ -49,7 +49,7 @@
 
 <div class="topnav">        
 	<a onclick="return confirm('Are you sure to logout?');" 
-    href="logout.php">Logout</a>
+    href="../logout.php">Logout</a>
 </div>
 
 </body>

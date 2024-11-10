@@ -75,15 +75,15 @@ if (isset($_SESSION['rememberme']) && !empty($_SESSION['rememberme'])) {
     <title>HR Management System</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
-<body>
-    <div class="container">
-        <h2>Login</h2>
+<body style="background:linear-gradient(135deg, #e0f7ff, #003d73);">
+    <div class="container" style="justify-content:center">
+        <h2 style="padding-left:200px; padding-top:120px;">Login</h2>
         <?php if(isset($_GET['error'])) { ?>
             <div class="alert alert-danger">
                 <?php echo $_GET['error']; ?>
             </div>
         <?php } ?>
-        <form action="" method="POST">
+        <form action="" method="POST" style="padding-bottom:120px; padding-left:200px; padding-right: 200px;">
             <div class="mb-3">
               <label for="email" class="form-label">Email address</label>
               <input required type="email" placeholder="Email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
