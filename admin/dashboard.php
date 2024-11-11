@@ -3,36 +3,42 @@ require_once "logincheck.php";
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
-    <title>Administrative Panel - HR Management System</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>
+    Admin Dashboard
+</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 </head>
 
 <body>
-    <div class="container">
-        <p class="text-right">
-            Hello <?php echo $_SESSION['username']; ?> 
-            <a onclick="return confirm('Are you sure to logout?');" href="logout.php">Logout</a>
-        </p>
+	<?php require_once "sidebar.php"; ?>
+	
+	<center>
+	<div class="head">
+	<h2> ADMIN DASHBOARD </h2>
+	</div>
+	</center>
+	
+	<a href="dashboard.php" title="Dashboard">
+	<img src="https://cdn4.iconfinder.com/data/icons/business-intelligence-flat/60/Business_Dashboard-intelligence-solutions-512.png" style="padding:8px;margin-left:550px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Profile">
+	</a>
+		
+	<a href="managers.php" title="Manager">
+	<img src="https://cdn4.iconfinder.com/data/icons/accounting-49/62/Bookkeeper-accountant-office-financial-manager-512.png" style="padding:8px;margin-left:100px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Leave Requests">
+	</a> <br>
+	
+	<a href="departments.php" title="Department">
+	<img src="https://cdn2.iconfinder.com/data/icons/building-219/66/3-512.png" style="padding:8px;margin-left:550px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Leave Substitution">
+	</a>
 
-        <div class="col">
-            <div class="col-12 bg-secondary text-white">
-                <a href="managers.php" class="text-white">Managers</a>
-                |
-                <a href="employees.php" class="text-white">Employees</a>
-                |
-                <a href="departments.php" class="text-white">Departments</a>
-            </div>
-        </div>
+	<a href="employees.php" title="Employee">
+	<img src="https://cdn0.iconfinder.com/data/icons/business-startup-10/50/63-512.png" style="padding:8px;margin-left:100px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Employees List">
+	</a>
+	<?php require_once "../footer.php"; ?>
 
-        <div class="main" style="height:300px;">
-            <h1>Welcome to administrative panel of HR Management System.</h1>
-        </div>
-
-        <div class="footer">
-            Copyright @ HR Management System
-        </div>
-    </div>
 </body>
 </html>

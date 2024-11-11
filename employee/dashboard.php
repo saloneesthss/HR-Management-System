@@ -10,6 +10,8 @@ require_once "../logincheck.php"
 <title>
     Employee Dashboard
 </title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 </head>
 
 <body>
@@ -22,7 +24,7 @@ require_once "../logincheck.php"
 	</center>
 	
 	<a href="profile.php" title="View Profile">
-	<img src="https://cdn0.iconfinder.com/data/icons/seo-web-4-1/128/Vigor_User-Avatar-Profile-Photo-01-512.png" style="padding:8px;margin-left:500px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Profile">
+	<img src="https://cdn0.iconfinder.com/data/icons/seo-web-4-1/128/Vigor_User-Avatar-Profile-Photo-01-512.png" style="padding:8px;margin-left:570px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Profile">
 	</a>
 		
 	<a href="leave.php" title="View Leave Request">
@@ -30,7 +32,7 @@ require_once "../logincheck.php"
 	</a> <br>
 	
 	<a href="payroll.php" title="View Payroll Details">
-	<img src="https://cdn4.iconfinder.com/data/icons/accounting-49/62/Payroll-monthly-calendar-check-income-512.png" style="padding:8px;margin-left:500px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Leave Substitution">
+	<img src="https://cdn4.iconfinder.com/data/icons/accounting-49/62/Payroll-monthly-calendar-check-income-512.png" style="padding:8px;margin-left:570px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Leave Substitution">
 	</a>
 
 	<a href="attendance.php" title="View Attendance Details">

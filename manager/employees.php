@@ -30,7 +30,6 @@ $employees=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
             <div class="card">
                 <div class="card-header">
                     Employee Listing
-                    <a href="add_employee.php" class="btn btn-primary">Add New</a>
                 </div>
                 <div class="card-body p-0">
                     <?php if(isset($_GET['error'])) { ?>

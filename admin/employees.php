@@ -21,12 +21,10 @@ $employees=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
 </head>
 <body>
-    <div class="container">
-        <p class="text-right">
-            Hello <?php echo $_SESSION['username']; ?> 
-            <a onclick="return confirm('Are you sure to logout?');" href="logout.php">Logout</a>
-        </p>
+    <?php require_once "sidebar.php"; ?>
 
+    <div class="container" style="padding-left:250px; padding-top:100px;">
+     
         <div class="main">
             <h2>Employees</h2>
             <div class="card">
