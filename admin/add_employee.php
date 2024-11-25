@@ -5,6 +5,9 @@ $stmtEmp=$con->prepare("select * from department");
 $stmtEmp->execute();
 $departments=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
 
+$uploadPath="../employee_images";
+// Used for uploading images to folder
+
 if($_SERVER['REQUEST_METHOD']==='POST') {
     //handle login submit
     $name=$_POST['name'];
@@ -16,7 +19,13 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
     $salary=$_POST['salary'];
     $Dep_Id=$_POST['Dep_Id'];
     
-    $sql="insert into employees set Emp_Name='$name', DOB='$dob', Gender='$gender', Contact='$contact', Email='$email', Password='$password', Salary='$salary', Dep_Id='$Dep_Id'";
+    $imageName=null;
+    if(is_uploaded_file($_FILES['image_name']['tmp_name'])) {
+        $imageName=$_FILES['image_name']['name'];
+        move_uploaded_file($_FILES['image_name']['tmp_name'], $uploadPath . "/" . $imageName);
+    }
+    
+    $sql="insert into employees set Emp_Name='$name', DOB='$dob', Gender='$gender', Contact='$contact', Email='$email', Password='$password', Image='$imageName', Salary='$salary', Dep_Id='$Dep_Id'";
     $depStmt=$con->prepare($sql);
     $depStmt->execute();
 
@@ -47,7 +56,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                     </div>
                     <?php } ?>
 
-                    <form action="" method="POST">
+                    <form action="" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input type="text" class="form-control" name="name" id="name">
@@ -76,6 +85,10 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                         <div class="form-group">
                             <label for="password">Password:</label>
                             <input type="password" class="form-control" name="password" id="password">
+                        </div>
+                        <div class="form-group">
+                            <label for="image_name">Image:</label>
+                            <input type="file" accept=".jpg,.jpeg,.png" class="form-control" name="image_name" id="image_name">
                         </div>
                         <div class="form-group">
                             <label for="salary">Salary:</label>

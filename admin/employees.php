@@ -51,6 +51,7 @@ $employees=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
                                 <th>Name</th>
                                 <th>Contact</th>
                                 <th>Email</th>
+                                <th>Photo</th>
                                 <th>Salary</th>
                                 <th>Department</th>
                                 <th>Action</th>
@@ -65,6 +66,11 @@ $employees=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
                                 <td><?php echo $employee['Emp_Name'];?></td>
                                 <td><?php echo $employee['Contact'];?></td>
                                 <td><?php echo $employee['Email'];?></td>
+                                <td>
+                                    <?php if (!empty($employee['Image']) && file_exists('../employee_images/' . $employee['Image'])) { ?>
+                                        <img width="100" src="../employee_images/<?php echo $employee['Image']; ?>" alt="">
+                                    <?php } ?>
+                                </td>
                                 <td><?php echo number_format($employee['Salary'],2);?></td>
                                 <td><?php echo $employee['Dep_Name'];?></td>
                                 <td>
