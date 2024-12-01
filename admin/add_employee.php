@@ -99,7 +99,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                             <select name="Dep_Id" id="Dep_Id" class="form-control">
                                 <option value="">Select Department</option>
                                 <?php foreach ($departments as $department) { ?>
-                                    <option value="<?php echo $department['Dep_Id']; ?>">
+                                    <option value="<?php echo $department['Dep_ID']; ?>">
                                         <?php echo $department['Dep_Name']?>
                                     </option>
                                 <?php } ?>
