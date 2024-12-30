@@ -73,44 +73,45 @@ if (isset($_SESSION['rememberme']) && !empty($_SESSION['rememberme'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>HR Management System</title>
+    <link rel="stylesheet" href="login1.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
-<body style="background:linear-gradient(135deg, #e0f7ff, #003d73);">
-    <div class="container" style="justify-content:center">
-        <h2 style="padding-left:200px; padding-top:120px;">Login</h2>
+<body>
+    <div class="container">
         <?php if(isset($_GET['error'])) { ?>
             <div class="alert alert-danger">
                 <?php echo $_GET['error']; ?>
             </div>
         <?php } ?>
-        <form action="" method="POST" style="padding-bottom:120px; padding-left:200px; padding-right: 200px;">
-            <div class="mb-3">
-              <label for="email" class="form-label">Email address</label>
-              <input required type="email" placeholder="Email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
-              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-            </div> <br>
-            
-            <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <input required type="password" placeholder="Password" name="password" class="form-control" id="password">
-            </div> <br>
-
-            <div class="form-group">
-                <label for="position">Position:</label>
-                <select name="position" id="position" class="form-control">
+        <div class="header">
+            <p>HR Management System</p>
+        </div>
+        <form action="" method="POST">
+            <div id="div_login">
+				<h1>Pharmacist Login</h1>
+				
+				<div>
+					<input type="email" class="textbox" id="email" name="email" placeholder="Email" />
+				</div>
+				<div>
+					<input type="password" class="textbox" id="password" name="password" placeholder="Password"/>
+				</div>
+                <div>
+                <select name="position" class="textbox" >
                     <option value="">Select Position</option>
                     <option value="employee">Employee</option>
                     <option value="manager">Manager</option>
                 </select>
-            </div>
-
-            <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="rememberme" name="rememberme">
-              <label class="form-check-label" for="rememberme">Remember Me</label>
-            </div> <br>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+                </div>
+                <div>
+                    <input type="checkbox" class="form-check-input" id="rememberme" name="rememberme">
+                    <label class="form-check-label" for="rememberme">Remember Me</label>
+                </div>
+				<div>
+					<input type="submit" value="Submit" name="submit" id="submit" />
+					<input type="submit" value="Click here for Admin Login" name="psubmit" id="submit" />
+				</div>
+            </form>
     </div>
 </body>
 </html>
