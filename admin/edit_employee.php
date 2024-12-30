@@ -5,6 +5,9 @@ if (!isset($_GET['id'])) {
     header("Location:employees.php?error=Please provide a valid ID for the employee.");
     die;
 }
+
+$uploadPath="../employee_images";
+
 $id=(int) $_GET['id'];
 
 $sql="select * from `employees` where EmployeeID=$id";
@@ -33,7 +36,17 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
     $salary=$_POST['salary'];
     $Dep_Id=$_POST['Dep_Id'];
     
-    $sql="update employees set Emp_Name='$name', DOB='$dob', Gender='$gender', Contact='$contact', Email='$email', Password='$password', Salary='$salary', Dep_Id='$Dep_Id' where EmployeeID=$id";
+    $imageNameOld=$_POST['image_name_old'];
+    $imageName=$imageNameOld;
+    if(is_uploaded_file($_FILES['image_name']['tmp_name'])) {
+        if (!empty($imageNameOld) && file_exists('../employee_images/' . $imageNameOld)) {
+            unlink('../employee_images/' . $imageNameOld);
+        }
+        $imageName=$_FILES['image_name']['name'];
+        move_uploaded_file($_FILES['image_name']['tmp_name'], $uploadPath . "/" . $imageName);
+    }
+    
+    $sql="update employees set Emp_Name='$name', DOB='$dob', Gender='$gender', Contact='$contact', Email='$email', Password='$password', Image='$imageName', Salary='$salary', Dep_Id='$Dep_Id' where EmployeeID=$id";
     $empStmt=$con->prepare($sql);
     $empStmt->execute();
 
@@ -57,7 +70,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
             <h2>Edit Employee</h2>
             <div class="card">
                 <div class="card-body">
-                    <form action="" method="POST">
+                    <form action="" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input type="text" 
@@ -107,6 +120,16 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                             name="password" 
                             id="password">
                         </div>
+
+                        <div class="form-group">
+                            <label for="">Image:</label>
+                            <input type="file" accept=".jpg,.jpeg,.png" class="form-control" name="image_name" id="image_name">
+                            <input type="hidden" name="image_name_old" value="<?php echo $employee['Image']; ?>">
+                            <?php if (!empty($employee['Image']) && file_exists('../employee_images/' . $employee['Image'])) { ?>
+                                <img width="100" src="../employee_images/<?php echo $employee['Image']; ?>" alt="">
+                            <?php } ?>
+                        </div>
+
                         <div class="form-group">
                             <label for="salary">Salary:</label>
                             <input type="number" 

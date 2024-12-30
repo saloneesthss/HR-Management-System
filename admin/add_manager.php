@@ -5,6 +5,8 @@ $stmtEmp=$con->prepare("select * from department");
 $stmtEmp->execute();
 $departments=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
 
+$uploadPath="../manager_images";
+
 if($_SERVER['REQUEST_METHOD']==='POST') {
     //handle login submit
     $name=$_POST['name'];
@@ -13,7 +15,13 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
     $contact=$_POST['contact'];
     $Dep_Id=$_POST['Dep_Id'];
     
-    $sql="insert into manager set Man_Name='$name', Email='$email', Password='$password', Contact='$contact', Dep_Id='$Dep_Id'";
+    $imageName=null;
+    if(is_uploaded_file($_FILES['image_name']['tmp_name'])) {
+        $imageName=$_FILES['image_name']['name'];
+        move_uploaded_file($_FILES['image_name']['tmp_name'], $uploadPath . "/" . $imageName);
+    }
+    
+    $sql="insert into manager set Man_Name='$name', Email='$email', Password='$password', Contact='$contact', Image='$imageName', Dep_Id='$Dep_Id'";
     $depStmt=$con->prepare($sql);
     $depStmt->execute();
 
@@ -44,7 +52,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                     </div>
                     <?php } ?>
                     
-                    <form action="" method="post">
+                    <form action="" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input type="text" class="form-control" name="name" id="name">
@@ -62,11 +70,15 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                             <input type="number" class="form-control" name="contact" id="contact">
                         </div>
                         <div class="form-group">
+                            <label for="image_name">Image:</label>
+                            <input type="file" accept=".jpg,.jpeg,.png" class="form-control" name="image_name" id="image_name">
+                        </div>
+                        <div class="form-group">
                             <label for="Dep_Id">Department ID:</label>
                             <select name="Dep_Id" id="Dep_Id" class="form-control">
                                 <option value="">Select Department</option>
                                 <?php foreach ($departments as $department) { ?>
-                                    <option value="<?php echo $department['Id']; ?>">
+                                    <option value="<?php echo $department['Dep_ID']; ?>">
                                         <?php echo $department['Dep_Name']?>
                                     </option>
                                 <?php } ?>

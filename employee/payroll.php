@@ -1,9 +1,17 @@
 <?php
 require_once "../logincheck.php";
+require_once "../connection.php";
 
-$stmtDep=$con->prepare("select * from payroll");
-$stmtDep->execute();
-$departments=$stmtDep->fetchAll(PDO::FETCH_ASSOC);
+$salary = isset($_GET['Salary']) ? $_GET['Salary'] : '';
+$where='';
+if (!empty($salary)) {
+    $where="WHERE payroll.Salary=$salary";
+}
+
+$sql="SELECT employees.Salary as Salary, payroll.* FROM payroll INNER JOIN employees ON employees.Salary=payroll.Salary $where";
+$stmtEmp=$con->prepare($sql);
+$stmtEmp->execute();
+$payrolls=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <?php require_once "sidebar.php"; ?>
@@ -31,13 +39,13 @@ $departments=$stmtDep->fetchAll(PDO::FETCH_ASSOC);
                         </thead>
                         <tbody>
                             <?php
-                            foreach ($departments as $department) {
+                            foreach ($payrolls as $payroll) {
                             ?>
                             <tr>
-                                <td><?php echo $department['EmployeeID'];?></td>
-                                <td><?php echo $department['Pay date'];?></td>
-                                <td><?php echo $department['Salary amount'];?></td>
-                                <td><?php echo $department['Account number'];?></td>
+                                <td><?php echo $payroll['EmployeeID'];?></td>
+                                <td><?php echo $payroll['Pay date'];?></td>
+                                <td><?php echo $payroll['Salary'];?></td>
+                                <td><?php echo $payroll['Account number'];?></td>
                             </tr>
                             <?php } ?>
                         </tbody>

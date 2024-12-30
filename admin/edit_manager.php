@@ -5,6 +5,9 @@ if (!isset($_GET['id'])) {
     header("Location:managers.php?error=Please provide a valid ID for the manager.");
     die;
 }
+
+$uploadPath="../manager_images";
+
 $id=(int) $_GET['id'];
 
 $sql="select * from `manager` where ManagerID=$id";
@@ -28,7 +31,17 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
     $contact=$_POST['contact'];
     $Dep_Id=$_POST['Dep_Id'];
     
-    $sql="update manager set Man_Name='$name', Email='$email', Password='$password', Contact='$contact', Dep_Id='$Dep_Id' where ManagerID=$id";
+    $imageNameOld=$_POST['image_name_old'];
+    $imageName=$imageNameOld;
+    if(is_uploaded_file($_FILES['image_name']['tmp_name'])) {
+        if (!empty($imageNameOld) && file_exists('../manager_images/' . $imageNameOld)) {
+            unlink('../manager_images/' . $imageNameOld);
+        }
+        $imageName=$_FILES['image_name']['name'];
+        move_uploaded_file($_FILES['image_name']['tmp_name'], $uploadPath . "/" . $imageName);
+    }
+    
+    $sql="update manager set Man_Name='$name', Email='$email', Password='$password', Contact='$contact', Image='$imageName', Dep_Id='$Dep_Id' where ManagerID=$id";
     $manStmt=$con->prepare($sql);
     $manStmt->execute();
 
@@ -53,7 +66,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
             <h2>Edit Manager</h2>
             <div class="card">
                 <div class="card-body">
-                    <form action="" method="POST">
+                    <form action="" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input type="text" 
@@ -86,6 +99,16 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                             name="contact" 
                             id="contact">
                         </div>
+
+                        <div class="form-group">
+                            <label for="">Image:</label>
+                            <input type="file" accept=".jpg,.jpeg,.png" class="form-control" name="image_name" id="image_name">
+                            <input type="hidden" name="image_name_old" value="<?php echo $manager['Image']; ?>">
+                            <?php if (!empty($manager['Image']) && file_exists('../manager_images/' . $manager['Image'])) { ?>
+                                <img width="100" src="../manager_images/<?php echo $manager['Image']; ?>" alt="">
+                            <?php } ?>
+                        </div>
+
                         <div class="form-group">
                             <label for="Dep_Id">Department:</label>
                             <select name="Dep_Id" id="Dep_Id" class="form-control">

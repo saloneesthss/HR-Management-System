@@ -49,6 +49,7 @@ $managers=$stmtMan->fetchAll(PDO::FETCH_ASSOC);
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Contact</th>
+                                <th>Photo</th>
                                 <th>Department</th>
                                 <th>Action</th>
                             </tr>
@@ -62,6 +63,11 @@ $managers=$stmtMan->fetchAll(PDO::FETCH_ASSOC);
                                 <td><?php echo $manager['Man_Name'];?></td>
                                 <td><?php echo $manager['Email'];?></td>
                                 <td><?php echo $manager['Contact'];?></td>
+                                <td>
+                                    <?php if (!empty($manager['Image']) && file_exists('../manager_images/' . $manager['Image'])) { ?>
+                                        <img width="100" src="../manager_images/<?php echo $manager['Image']; ?>" alt="">
+                                    <?php } ?>
+                                </td>
                                 <td><?php echo $manager['Dep_Name'];?></td>
                                 <td>
                                     <a class="btn btn-primary" href="edit_manager.php?id=<?php echo $manager['ManagerID']; ?>">Edit</a> 
