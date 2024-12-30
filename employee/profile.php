@@ -1,170 +1,162 @@
+<?php
+// Database connection
+$host = 'localhost';
+$username = 'root';
+$password = '';
+$dbname = 'hr_management_system';
+
+$conn = new mysqli($host, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Fetch employee data
+$employee_id = isset($_GET['EmployeeID']) ? $_GET['EmployeeID'] : 1; // Example employee ID
+$sql = "SELECT * FROM employees WHERE EmployeeID = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param('i', $employee_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$employee = $result->fetch_assoc();
+
+if (!$employee) {
+    echo "Employee not found.";
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Profile</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
-<style>
-* {
-  margin: 0;
-  padding-left: 250;
-  box-sizing: border-box;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding-left: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #e0f7ff, #003d73);
-  color: #333;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
+        .profile-container {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 60%;
+            overflow: hidden;
+        }
 
-.dashboard {
-  display: flex;
-  width: 90%;
-  max-width: 1200px;
-  height: 80vh;
-  background: #fff;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
+        .profile-header {
+            position: relative;
+            height: 150px;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+        }
 
-.sidebar {
-  width: 20%;
-  background: #003d73;
-  color: #fff;
-  padding: 20px;
-}
+        .profile-header img {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+        }
 
-.sidebar .profile {
-  text-align: center;
-  margin-bottom: 30px;
-}
+        .profile-body {
+            text-align: center;
+            padding: 70px 20px 20px;
+        }
 
-.sidebar .profile img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  margin-bottom: 10px;
-}
+        .profile-body h2 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
 
-.sidebar h2 {
-  font-size: 1.2em;
-  font-weight: normal;
-}
+        .profile-body p {
+            color: #777;
+            font-size: 16px;
+            margin: 5px 0 15px;
+        }
 
-.sidebar .nav a {
-  display: block;
-  padding: 10px;
-  color: #fff;
-  text-decoration: none;
-  margin-bottom: 5px;
-  transition: background 0.3s;
-}
+        .profile-stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            border-top: 1px solid #eee;
+        }
 
-.sidebar .nav a:hover {
-  background: #00509e;
-  border-radius: 5px;
-}
+        .profile-stats div {
+            text-align: center;
+        }
 
-.content {
-  width: 80%;
-  padding: 20px;
-  overflow-y: auto;
-}
+        .profile-stats div h3 {
+            margin: 0;
+            color: #333;
+            font-size: 20px;
+        }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+        .profile-stats div p {
+            margin: 0;
+            color: #777;
+            font-size: 14px;
+        }
 
-header h1 {
-  font-size: 1.5em;
-}
+        .action-buttons button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            background: #6e8efb;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
 
-.main-info {
-  display: flex;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.profile-info, .basic-info {
-  background: #f3f3f3;
-  padding: 15px;
-  border-radius: 10px;
-  width: 50%;
-}
-
-.profile-info h2 {
-  margin-bottom: 10px;
-  font-size: 1.3em;
-}
-
-.events {
-  margin-top: 20px;
-  background: #f3f3f3;
-  padding: 15px;
-  border-radius: 10px;
-}
-
-.events h3 {
-  margin-bottom: 10px;
-}
-</style>
+        .action-buttons button:hover {
+            background: #a777e3;
+        }
+    </style>
 </head>
 <body>
-    <?php require_once "sidebar.php"; ?>
-
-    <div class="container" style="padding-left:250px; padding-top:100px;">
-     <div class="profile">
-      <main class="content">
-       <header>
-        <h1>Profile</h1>
-        <p>July 24, 2020, 4:30 PM</p>
-       </header>
-       <section class="main-info">
-        <!-- Profile Info -->
-        <div class="profile-info">
-          <img src="profile.jpg" alt="Profile Picture">
-          <h2>Helen Voizhicki</h2>
-          <p>Role: User | Position: Head of HR Department</p>
-          <p>Email: helen.voizhicki@gmail.com</p>
-          <p>Phone: +1 707 255 843</p>
+  <?php include "sidebar.php" ?>
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="<?php echo $employee['Image'] ?>">
         </div>
-        <!-- Basic Information -->
-        <div class="basic-info">
-          <h3>Basic Information</h3>
-          <p>Hire Date: August 26, 2019</p>
-          <p>Worked for: 3 Years, 1 Month</p>
-          <p>Employee ID: #956</p>
-          <p>SSN: XXX-XX-5861</p>
+        <div class="profile-body">
+            <h2><?= htmlspecialchars($employee['Emp_Name']) ?></h2>
+            <p><?= htmlspecialchars($employee['Email']) ?></p>
         </div>
-      </section>
-      <!-- Upcoming Events -->
-      <section class="events">
-        <h3>Upcoming Events</h3>
-        <p>Design Review - 9:00 AM - 10:00 AM</p>
-      </section>
-    </main>
-  </div>
-
-        <?php require_once "../footer.php"; ?>
+        <div class="profile-stats">
+            <div>
+                <h3><?= htmlspecialchars($employee['DOB']) ?></h3>
+                <p>Date of birth</p>
+            </div>
+            <div>
+                <h3><?= htmlspecialchars($employee['Gender']) ?></h3>
+                <p>Gender</p>
+            </div>
+            <div>
+                <h3><?= htmlspecialchars($employee['Contact']) ?></h3>
+                <p>Contact</p> 
+            </div>
+            <div>
+                <h3><?= htmlspecialchars($employee['Salary']) ?></h3>
+                <p>Salary</p>
+            </div>
+            <div>
+                <h3><?= htmlspecialchars($employee['Dep_ID']) ?></h3>
+                <p>Department</p>
+            </div>
+        </div>
     </div>
 </body>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-  const dateElement = document.querySelector("header p");
-
-  function updateTime() {
-    const now = new Date();
-    dateElement.textContent = now.toLocaleString();
-  }
-
-  setInterval(updateTime, 1000);
-});
-</script>
 </html>
-

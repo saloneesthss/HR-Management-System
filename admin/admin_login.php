@@ -25,7 +25,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
     }
 }
 ?>
-
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,6 +60,43 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+    </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>HR Management System</title>
+    <link rel="stylesheet" href="../login1.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <?php if(isset($_GET['error'])) { ?>
+            <div class="alert alert-danger">
+                <?php echo $_GET['error']; ?>
+            </div>
+        <?php } ?>
+        <div class="header">
+            <p>HR Management System</p>
+        </div>
+        <form action="" method="POST">
+            <div id="div_login">
+				<h1>Admin Login</h1>
+				
+				<div>
+					<input type="email" class="textbox" id="email" name="email" placeholder="Email" />
+				</div>
+				<div>
+					<input type="password" class="textbox" id="password" name="password" placeholder="Password"/>
+				</div>
+				<div>
+					<input type="submit" value="Submit" name="submit" id="submit" />
+				</div>
+            </form>
     </div>
 </body>
 </html>

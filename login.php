@@ -3,7 +3,7 @@ session_start();
 
 require_once "connection.php";
 
-if($_SERVER['REQUEST_METHOD']==='POST') {
+if($_SERVER['REQUEST_METHOD']==='POST' ) {
     //handle login submit
     $email=$_POST['email'];
     $password=md5($_POST['password']);
@@ -88,7 +88,7 @@ if (isset($_SESSION['rememberme']) && !empty($_SESSION['rememberme'])) {
         </div>
         <form action="" method="POST">
             <div id="div_login">
-				<h1>Pharmacist Login</h1>
+				<h1>Employees Login</h1>
 				
 				<div>
 					<input type="email" class="textbox" id="email" name="email" placeholder="Email" />
@@ -109,7 +109,7 @@ if (isset($_SESSION['rememberme']) && !empty($_SESSION['rememberme'])) {
                 </div>
 				<div>
 					<input type="submit" value="Submit" name="submit" id="submit" />
-					<input type="submit" value="Click here for Admin Login" name="psubmit" id="submit" />
+					<input type="submit" value="Click here for Admin Login" name="psubmit" href="./admin/admin_login.php" id="submit"/>
 				</div>
             </form>
     </div>
