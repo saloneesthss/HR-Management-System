@@ -55,7 +55,7 @@ if (!$employee) {
         .profile-header {
             position: relative;
             height: 150px;
-            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            background: linear-gradient(135deg,rgb(30, 57, 145), #05223d);
         }
 
         .profile-header img {
@@ -121,7 +121,7 @@ if (!$employee) {
         }
 
         .action-buttons button:hover {
-            background: #a777e3;
+            background: #05223d;
         }
     </style>
 </head>

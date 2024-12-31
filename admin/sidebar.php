@@ -18,9 +18,9 @@
         </li>
 
         <li>
-            <a href="managers.php">
+            <a href="leave_approve.php">
                 <i class='bx bx-user-circle'></i>
-                Manager
+                Leave Approval
             </a>
         </li>
         

@@ -5,12 +5,12 @@ require_once "connection.php";
 
 if($_SERVER['REQUEST_METHOD']==='POST' ) {
     //handle login submit
-    $email=$_POST['email'];
+    $username=$_POST['username'];
     $password=md5($_POST['password']);
-    $position=$_POST['position'];
-    
-    if($position === 'employee') {
-        $sql="select * from employees where Email='$email' and Password='$password'";
+    // $position=$_POST['position'];
+
+    $sql="select * from employees where Email='$username' and Password='$password'";
+    $sql="select * from employees where Email='$username' and Password='$password'";
         $loginStmt=$con->prepare($sql);
         $loginStmt->execute();
 
@@ -23,47 +23,50 @@ if($_SERVER['REQUEST_METHOD']==='POST' ) {
             $_SESSION['employee_login']=true;
             $_SESSION['email']=$loginUser['email'];
             $_SESSION['employeeid']=$loginUser['id'];  //stores employee id in session
-            header("Location:employee/dashboard.php");
+            header("Location:employee/dashboard.php?id=$EmployeeID");
             die;
         } else {
             header("Location:login.php?error=Your entered credintials do not match our records.");
             die;
         }
-    } 
-    elseif($position === 'manager') {
-        $sql="select * from manager where Email='$email' and Password='$password'";
-        $loginStmt=$con->prepare($sql);
-        $loginStmt->execute();
+    // if($position === 'employee') {
+        
+    // } 
+    // elseif($position === 'manager') {
+    //     $sql="select * from manager where Email='$email' and Password='$password'";
+    //     $loginStmt=$con->prepare($sql);
+    //     $loginStmt->execute();
 
-        $loginUser=$loginStmt->fetch(PDO::FETCH_ASSOC);
-        if ($loginUser) {
-            if(isset($_POST['rememberme'])) {
-                setcookie('rememberme',1,time()+3600*24);
-            }
+    //     $loginUser=$loginStmt->fetch(PDO::FETCH_ASSOC);
+    //     if ($loginUser) {
+    //         if(isset($_POST['rememberme'])) {
+    //             setcookie('rememberme',1,time()+3600*24);
+    //         }
 
-            $_SESSION['manager_login']=true;
-            $_SESSION['email']=$loginUser['email'];
-            $_SESSION['managerid']=$loginUser['id'];  //stores manager id in session
-            header("Location:manager/dashboard.php");
-            die;
-        } else {
-            header("Location:login.php?error=Your entered credintials do not match our records.");
-            die;
-        }
-    } 
-    else {
-        header("Location:login.php?error=Please enter your position first.");
-        die;
-    }
+    //         $_SESSION['manager_login']=true;
+    //         $_SESSION['email']=$loginUser['email'];
+    //         $_SESSION['managerid']=$loginUser['id'];  //stores manager id in session
+    //         header("Location:manager/dashboard.php");
+    //         die;
+    //     } else {
+    //         header("Location:login.php?error=Your entered credintials do not match our records.");
+    //         die;
+    //     }
+    // } 
+    // else {
+    //     header("Location:login.php?error=Please enter your position first.");
+    //     die;
+    // }
 }
 
 if (isset($_SESSION['rememberme']) && !empty($_SESSION['rememberme'])) {
-    if($position === 'employee') {
+    // if($position === 'employee') {
         header("Location:employee/dashboard.php");
         die;
-    } else {
-        header("Location:manager/dashboard.php");
-    }
+    // } 
+    // else {
+    //     header("Location:manager/dashboard.php");
+    // }
 }
 ?>
 
@@ -76,42 +79,49 @@ if (isset($_SESSION['rememberme']) && !empty($_SESSION['rememberme'])) {
     <link rel="stylesheet" href="login1.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
-<body>
-    <div class="container">
+<body style="font-family:Arial;	background-size:cover;	overflow:hidden;">
+    <div class="container" style="justify-content:center">
+        <h1 style="  padding: 10px;
+  margin:10px;
+  text-align: center;
+  background:  #05223d;
+  color: white;
+  font-size: 40px;
+  overflow:hidden;
+">HR Management System</h1>
         <?php if(isset($_GET['error'])) { ?>
             <div class="alert alert-danger">
                 <?php echo $_GET['error']; ?>
             </div>
         <?php } ?>
-        <div class="header">
-            <p>HR Management System</p>
-        </div>
         <form action="" method="POST">
             <div id="div_login">
-				<h1>Employees Login</h1>
-				
-				<div>
-					<input type="email" class="textbox" id="email" name="email" placeholder="Email" />
-				</div>
-				<div>
-					<input type="password" class="textbox" id="password" name="password" placeholder="Password"/>
-				</div>
-                <div>
-                <select name="position" class="textbox" >
-                    <option value="">Select Position</option>
-                    <option value="employee">Employee</option>
-                    <option value="manager">Manager</option>
-                </select>
-                </div>
-                <div>
-                    <input type="checkbox" class="form-check-input" id="rememberme" name="rememberme">
-                    <label class="form-check-label" for="rememberme">Remember Me</label>
-                </div>
-				<div>
-					<input type="submit" value="Submit" name="submit" id="submit" />
-					<input type="submit" value="Click here for Admin Login" name="psubmit" href="./admin/admin_login.php" id="submit"/>
-				</div>
-            </form>
+                <h1>Employee Login</h1>
+            <div>
+              <input required type="text" placeholder="Username" name="username" class="textbox">
+            </div> 
+            
+            <div>
+              <input required type="password" placeholder="Password" name="password" class="textbox">
+            </div>
+
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="rememberme" name="rememberme">
+              <label class="form-check-label" for="rememberme">Remember Me</label>
+            </div> 
+
+            <input type="submit" value="Submit" name="submit" id="submit">
+            <a href="./admin/admin_login.php" style="background-color: #05223d;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  display:inline-block;
+  margin-top:5px;
+  list-style:none;">Click here for Admin Login</a>
+
+            </div>
+        </form>
     </div>
 </body>
 </html>

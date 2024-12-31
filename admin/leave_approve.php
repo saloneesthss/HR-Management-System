@@ -1,5 +1,5 @@
 <?php
-require_once "../logincheck.php";
+require_once "logincheck.php";
 require_once "../connection.php";
 
 $manId = isset($_GET['Man_Name']) ? $_GET['Man_Name'] : '';
