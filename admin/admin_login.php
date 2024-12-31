@@ -26,7 +26,6 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,14 +37,9 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
 </head>
 <body style="font-family:Arial;	background-size:cover;	overflow:hidden;">
     <div class="container" style="justify-content:center">
-        <h1 style="padding: 10px;
-  margin:10px;
-  text-align: center;
-  background:  #05223d;
-  color: white;
-  font-size: 40px;
-  overflow:hidden;
-">HR Management System</h1>
+        <h1 style="padding:10px;margin:10px; text-align:center;background:#05223d;color: white;font-size: 40px;overflow:hidden;">
+            HR Management System
+        </h1>
         <?php if(isset($_GET['error'])) { ?>
             <div class="alert alert-danger">
                 <?php echo $_GET['error']; ?>
@@ -67,8 +61,10 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
               <label class="form-check-label" for="rememberme">Remember Me</label>
             </div> 
 
-            <input type="submit" value="Submit" name="submit" id="submit">
-            
+            <input type="submit" value="Submit" name="submit" id="submit" style="padding:12px 20px;">
+            <a href="../login.php" style="background-color: #05223d; color: white; padding: 12px 20px; border: none; border-radius: 4px; display:inline-block; margin-top:5px;">
+                Click here for Employee Login
+            </a>
             </div>
         </form>
     </div>

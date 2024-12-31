@@ -19,8 +19,8 @@
 
         <li>
             <a href="leave_approve.php">
-                <i class='bx bx-user-circle'></i>
-                Leave Approval
+                <i class='bx bx-calendar-event'></i>                
+                Leave Requests
             </a>
         </li>
         
