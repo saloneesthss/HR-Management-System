@@ -24,7 +24,7 @@ require_once "logincheck.php";
 	</center>
 	
 	<a href="leave_approve.php" title="Leave Requests">
-	<img src="https://cdn3.iconfinder.com/data/icons/digital-marketing-filled-outline-3/64/time-128.png" style="padding:8px;margin-left:430px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Leave Requests">
+	<img src="https://cdn3.iconfinder.com/data/icons/growth-marketing-8/66/27-512.png" style="padding:8px;margin-left:430px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Leave Requests">	
 	</a> 
 	
 	<!-- <a href="managers.php" title="Manager">
@@ -32,14 +32,14 @@ require_once "logincheck.php";
 	</a>  -->
 	
 	<a href="departments.php" title="Department">
-	<img src="https://cdn2.iconfinder.com/data/icons/building-219/66/3-512.png" style="padding:8px;margin-left:100px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Leave Substitution">
+	<img src="https://cdn2.iconfinder.com/data/icons/building-219/66/3-512.png" style="padding:8px;margin-left:100px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Departments">
 	</a>
 
 	<a href="employees.php" title="Employee">
 	<img src="https://cdn4.iconfinder.com/data/icons/accounting-49/62/Bookkeeper-accountant-office-financial-manager-512.png" style="padding:8px;margin-left:100px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Employees List">
 	</a> 
 
-	<p><?php require_once "../footer.php"; ?></p>
+	<!-- <p><?php require_once "../footer.php"; ?></p> -->
 	
 </body>
 </html>
