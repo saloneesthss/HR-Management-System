@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="sidebar">
-	<h2> EMPLOYEE  </h2>
+	<h2> A D M I N  </h2>
 	
     <ul>
         <li>

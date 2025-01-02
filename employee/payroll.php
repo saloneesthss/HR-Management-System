@@ -23,8 +23,8 @@ $payrolls=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
 </head>
 <body>  
+   <?php include "sidebar.php" ?>
     <div class="container" style="padding-left:250px; padding-top:100px;">
-     
         <div class="main">
             <h2>Payroll Details</h2>
             <div class="card">

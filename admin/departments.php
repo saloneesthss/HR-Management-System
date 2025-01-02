@@ -18,12 +18,11 @@ $departments=$stmtDep->fetchAll(PDO::FETCH_ASSOC);
     <div class="container" style="padding-left:250px; padding-top:100px;">
      
         <div class="main">
-            <h2>Departments</h2>
+            <h2>Departments
+                <img src="./resources/plus.png" title="Add New" style="width:35px;padding:3px;border:3px solid #000080;">
+            </h2>
+            
             <div class="card">
-                <div class="card-header">
-                    Department Listing
-                    <a href="add_department.php" class="btn btn-primary">Add New</a>
-                </div>
                 <div class="card-body p-0">
                     <?php if(isset($_GET['error'])) { ?>
                     <div class="alert alert-danger">
@@ -54,9 +53,13 @@ $departments=$stmtDep->fetchAll(PDO::FETCH_ASSOC);
                                 <td><?php echo $department['Dep_Name'];?></td>
                                 <td><?php echo $department['Location'];?></td>
                                 <td>
-                                    <a class="btn btn-primary" href="edit_department.php?id=<?php echo $department['Id']; ?>">Edit</a> 
-                                    <a class="btn btn-danger" onclick="return confirm('Are you sure to delete this department?')"
-                                    href="delete_department.php?id=<?php echo $department['Id']; ?>">Delete</a>
+                                    <a title="Edit" href="edit_department.php?id=<?php echo $department['Id']; ?>">
+                                        <img src="./resources/edit.png" alt="Edit" style="width:25px;margin-right:10px;">
+                                    </a> 
+                                    <a title="Delete" onclick="return confirm('Are you sure to delete this department?')"
+                                    href="delete_department.php?id=<?php echo $department['Id']; ?>">
+                                        <img src="./resources/delete.png" alt="Delete" style="width:25px;">
+                                    </a>
                                 </td>
                             </tr>
                             <?php } ?>

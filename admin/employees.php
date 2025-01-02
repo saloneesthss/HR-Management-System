@@ -26,12 +26,13 @@ $employees=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
     <div class="container" style="padding-left:250px; padding-top:100px;">
      
         <div class="main">
-            <h2>Employees</h2>
+            <h2>Employees
+                <a href="add_employee.php" title="Add New">
+                    <img src="./resources/plus.png" alt="Add New" style="width:35px;padding:3px;border:3px solid #000080;">
+                </a>
+            <!-- <a href="add_employee.php" class="btn btn-primary">Add New</a> -->
+            </h2>
             <div class="card">
-                <div class="card-header">
-                    Employee Listing
-                    <a href="add_employee.php" class="btn btn-primary">Add New</a>
-                </div>
                 <div class="card-body p-0">
                     <?php if(isset($_GET['error'])) { ?>
                     <div class="alert alert-danger">
@@ -74,9 +75,13 @@ $employees=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
                                 <td><?php echo number_format($employee['Salary'],2);?></td>
                                 <td><?php echo $employee['Dep_Name'];?></td>
                                 <td>
-                                    <a class="btn btn-primary" href="edit_employee.php?id=<?php echo $employee['EmployeeID']; ?>">Edit</a> 
-                                    <a class="btn btn-danger" onclick="return confirm('Are you sure to delete this employee?')"
-                                    href="delete_employee.php?id=<?php echo $employee['EmployeeID']; ?>">Delete</a>
+                                    <a title="Edit" href="edit_employee.php?id=<?php echo $employee['EmployeeID']; ?>">
+                                        <img src="./resources/edit.png" alt="Edit" style="width:25px;">
+                                    </a> 
+                                    <a title="Delete" onclick="return confirm('Are you sure to delete this employee?')"
+                                    href="delete_employee.php?id=<?php echo $employee['EmployeeID']; ?>">
+                                        <img src="./resources/delete.png" alt="Delete" style="width:25px;">
+                                    </a>
                                 </td>
                             </tr>
                             <?php } ?>

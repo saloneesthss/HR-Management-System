@@ -69,9 +69,9 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                             <label for="gender">Gender:</label>
                             <select name="gender" id="gender" class="form-control">
                                 <option value="">Select Gender</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                                <option value="others">Others</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Others">Others</option>
                             </select>
                         </div>
                         <div class="form-group">

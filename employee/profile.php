@@ -48,7 +48,7 @@ if (!$employee) {
             background: #fff;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 60%;
+            width: 90%;
             overflow: hidden;
         }
 
@@ -153,7 +153,7 @@ if (!$employee) {
                 <p>Salary</p>
             </div>
             <div>
-                <h3><?= htmlspecialchars($employee['Dep_ID']) ?></h3>
+                <h3><?= htmlspecialchars($employee['Dep_Id']) ?></h3>
                 <p>Department</p>
             </div>
         </div>

@@ -1,14 +1,14 @@
 <?php
-require_once "logincheck.php";
+require_once "../logincheck.php";
 require_once "../connection.php";
 
-$manId = isset($_GET['Man_Name']) ? $_GET['Man_Name'] : '';
+$admId = isset($_GET['username']) ? $_GET['username'] : '';
 $where='';
-if (!empty($manId)) {
-    $where="WHERE `manager`.`Man_Name`=$manId";
+if (!empty($admId)) {
+    $where="WHERE `admin`.`username`=$admId";
 }
 
-$sql="SELECT `manager`.`Man_Name` as `Approved by`, `leave`.* FROM `leave` INNER JOIN `manager` ON `manager`.`Man_Name`=`leave`.`Approved by` $where";
+$sql="SELECT `admin`.`username` as `Approved by`, `leave`.* FROM `leave` INNER JOIN `admin` ON `admin`.`username`=`leave`.`Approved by` $where";
 $stmtLeave=$con->prepare($sql);
 $stmtLeave->execute();
 $leaves=$stmtLeave->fetchAll(PDO::FETCH_ASSOC);
@@ -17,7 +17,7 @@ $leaves=$stmtLeave->fetchAll(PDO::FETCH_ASSOC);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Document</title>
+    <title>Leave Requests</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
 </head>
 <body>
@@ -27,9 +27,6 @@ $leaves=$stmtLeave->fetchAll(PDO::FETCH_ASSOC);
         <div class="main">
             <h2>Leave Requests</h2>
             <div class="card">
-                <div class="card-header">
-                    Leave Request Listing
-                </div>
                 <div class="card-body p-0">
                     <?php if(isset($_GET['error'])) { ?>
                     <div class="alert alert-danger">

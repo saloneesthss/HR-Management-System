@@ -91,9 +91,9 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                             <label for="gender">Gender:</label>
                             <select name="gender" id="gender" class="form-control">
                                 <option value="">Select Gender</option>
-                                <option <?php echo $employee['Gender']=='male'?'selected':'';?> value="male">Male</option>
-                                <option <?php echo $employee['Gender']=='female'?'selected':'';?> value="female">Female</option>
-                                <option <?php echo $employee['Gender']=='others'?'selected':'';?> value="others">Others</option>
+                                <option <?php echo $employee['Gender']=='Male'?'selected':'';?> value="Male">Male</option>
+                                <option <?php echo $employee['Gender']=='Female'?'selected':'';?> value="Female">Female</option>
+                                <option <?php echo $employee['Gender']=='Others'?'selected':'';?> value="Others">Others</option>
                             </select>
                         </div>
                         <div class="form-group">
