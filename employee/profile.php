@@ -29,9 +29,9 @@ if (!$employee) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Profile</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -126,7 +126,10 @@ if (!$employee) {
     </style>
 </head>
 <body>
-  <?php include "sidebar.php" ?>
+<?php include "sidebar.php" ?>
+
+<div class="container">
+
     <div class="profile-container">
         <div class="profile-header">
             <img src="<?php echo $employee['Image'] ?>">
@@ -158,5 +161,6 @@ if (!$employee) {
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
