@@ -16,16 +16,17 @@ if($_SERVER['REQUEST_METHOD']==='POST' ) {
 
         $loginUser=$loginStmt->fetch(PDO::FETCH_ASSOC);
         if ($loginUser) {
-            if(isset($_POST['rememberme'])) {
+            if (isset($_POST['rememberme'])) {
                 setcookie('rememberme',1,time()+3600*24);
             }
             
             $_SESSION['employee_login']=true;
-            $_SESSION['email']=$loginUser['email'];
+            $_SESSION['username']=$loginUser['username'];
             $_SESSION['employeeid']=$loginUser['id'];  //stores employee id in session
-            header("Location:employee/dashboard.php?id=$EmployeeID");
+            header("Location:employee/dashboard.php?id=" . $_SESSION['employeeid']);
             die;
         } else {
+            //$_SESSION['error'] = 'Your entered credintials do not match our records.';
             header("Location:login.php?error=Your entered credintials do not match our records.");
             die;
         }
@@ -80,8 +81,13 @@ if (isset($_SESSION['rememberme']) && !empty($_SESSION['rememberme'])) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body style="font-family:Arial;	background-size:cover;	overflow:hidden;">
+<<<<<<< HEAD
     <div class="container" style="justify-content:center">
         <h1 style="padding: 40px; margin:10px; margin-bottom: 30px; text-align: center; background:#05223d; color: white; font-size: 40px; overflow:hidden;">
+=======
+    <div class="container">
+        <h1 style="padding: 10px; margin:10px; text-align: center; background:#05223d; color: white; font-size: 40px; overflow:hidden;">
+>>>>>>> 0219461 (changes commited)
             HR Management System
         </h1>
         <?php if(isset($_GET['error'])) { ?>
@@ -105,6 +111,7 @@ if (isset($_SESSION['rememberme']) && !empty($_SESSION['rememberme'])) {
               <label class="form-check-label" for="rememberme">Remember Me</label>
             </div> 
 
+            
             <input type="submit" value="Submit" name="submit" id="submit" style="padding:12px 20px;">
             <a href="./admin/admin_login.php" style="background-color: #05223d; color: white; padding: 12px 20px; border: none; border-radius: 4px; display:inline-block; margin-top:5px;">
                 Click here for Admin Login

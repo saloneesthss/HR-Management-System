@@ -83,7 +83,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Attendance</title>
+    <title>Employee Attendance</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
 </head>
 <body>
@@ -111,12 +111,12 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                                 <?php } ?>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="check_in">Check in:</label>
-                            <input type="checkbox" class="form-control" name="check_in" id="check_in" style="padding-top:-10px">
+                        <div class="form-group" style="display:flex; align-items:center;">
+                            <label for="check_in" style="white-space:nowrap; padding-right:20px;">Check in:</label>
+                            <input type="checkbox" class="form-control" name="check_in" id="check_in">
                         </div>
-                        <div class="form-group">
-                            <label for="check_out">Check out:</label>
+                        <div class="form-group" style="display:flex; align-items:center;">
+                            <label for="check_out" style="white-space:nowrap; padding-right:20px;">Check out:</label>
                             <input type="checkbox" class="form-control" name="check_out" id="check_out">
                         </div>
 

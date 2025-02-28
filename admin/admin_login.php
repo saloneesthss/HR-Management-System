@@ -36,8 +36,13 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body style="font-family:Arial;	background-size:cover;	overflow:hidden;">
+<<<<<<< HEAD
     <div class="container" style="justify-content:center">
         <h1 style="padding:40px;margin:10px;margin-bottom:30px; text-align:center;background:#05223d;color: white;font-size: 40px;overflow:hidden;">
+=======
+    <div class="container">
+        <h1 style="padding:10px;margin:10px; text-align:center;background:#05223d;color: white;font-size: 40px;overflow:hidden;">
+>>>>>>> 0219461 (changes commited)
             HR Management System
         </h1>
         <?php if(isset($_GET['error'])) { ?>
@@ -45,7 +50,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                 <?php echo $_GET['error']; ?>
             </div>
         <?php } ?>
-        <form action="" method="POST">
+        <form action="" method="POST" style="display:flex; justify-content:center">
             <div id="div_login">
                 <h1>Admin Login</h1>
             <div>

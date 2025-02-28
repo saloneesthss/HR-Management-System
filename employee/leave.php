@@ -28,7 +28,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Leave Request</title>
+    <title>Employee Leave Request</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
 </head>
 <body>
