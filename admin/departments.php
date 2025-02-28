@@ -19,7 +19,9 @@ $departments=$stmtDep->fetchAll(PDO::FETCH_ASSOC);
      
         <div class="main">
             <h2>Departments
+                <a href="add_department.php" title="Add New">
                 <img src="./resources/plus.png" title="Add New" style="width:35px;padding:3px;border:3px solid #000080;">
+                </a>
             </h2>
             
             <div class="card">

@@ -81,7 +81,7 @@ if (isset($_SESSION['rememberme']) && !empty($_SESSION['rememberme'])) {
 </head>
 <body style="font-family:Arial;	background-size:cover;	overflow:hidden;">
     <div class="container" style="justify-content:center">
-        <h1 style="padding: 10px; margin:10px; text-align: center; background:#05223d; color: white; font-size: 40px; overflow:hidden;">
+        <h1 style="padding: 40px; margin:10px; margin-bottom: 30px; text-align: center; background:#05223d; color: white; font-size: 40px; overflow:hidden;">
             HR Management System
         </h1>
         <?php if(isset($_GET['error'])) { ?>
@@ -89,7 +89,7 @@ if (isset($_SESSION['rememberme']) && !empty($_SESSION['rememberme'])) {
                 <?php echo $_GET['error']; ?>
             </div>
         <?php } ?>
-        <form action="" method="POST">
+        <form action="" method="POST" style="display:flex; flex-direction:column; justify-content:center">
             <div id="div_login">
                 <h1>Employee Login</h1>
             <div>
