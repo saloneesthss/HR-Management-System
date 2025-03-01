@@ -3,7 +3,7 @@ require_once "../logincheck.php";
 require_once "../connection.php";
 
 $salary = isset($_GET['Salary']) ? $_GET['Salary'] : '';
-$where='WHERE employees.employeeid=id';
+$where='WHERE employees.employeeid=payroll.EmployeeID';
 if (!empty($salary)) {
     $where="WHERE payroll.Salary=$salary";
 }

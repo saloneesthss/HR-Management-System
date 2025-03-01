@@ -28,7 +28,7 @@ $employees=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
         <div class="main">
             <h2>Employees
                 <a href="add_employee.php" title="Add New">
-                    <img src="./resources/plus.png" alt="Add New" style="width:35px;padding:3px;border:3px solid #000080;">
+                    <img src="./resources/plus.png" alt="Add New" style="width:35px;padding:3px;">
                 </a>
             <!-- <a href="add_employee.php" class="btn btn-primary">Add New</a> -->
             </h2>

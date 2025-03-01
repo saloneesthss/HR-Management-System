@@ -16,13 +16,6 @@
                 Dashboard
             </a>
         </li>
-
-        <li>
-            <a href="leave_approve.php">
-                <i class='bx bx-calendar-event'></i>                
-                Leave Requests
-            </a>
-        </li>
         
         <li>
             <a href="departments.php">
@@ -35,6 +28,20 @@
             <a href="employees.php">
                 <i class='bx bxs-user-account'></i>
                 Employee
+            </a>
+        </li>
+        
+        <li>
+            <a href="leave_approve.php">
+                <i class='bx bx-calendar-event'></i>                
+                Leave Requests
+            </a>
+        </li>
+
+        <li>
+            <a href="add_salary.php">
+            <i class='bx bx-money-withdraw'></i>                
+                Payroll
             </a>
         </li>
     </ul>

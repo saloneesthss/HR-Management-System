@@ -23,21 +23,22 @@ require_once "logincheck.php";
 	</div>
 	</center>
 	
-	<a href="leave_approve.php" title="Leave Requests">
-	<img src="https://cdn3.iconfinder.com/data/icons/growth-marketing-8/66/27-512.png" style="padding:8px;margin-left:430px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Leave Requests">	
-	</a> 
-	
-	<!-- <a href="managers.php" title="Manager">
-	<img src="https://cdn0.iconfinder.com/data/icons/business-startup-10/50/63-512.png" style="padding:8px;margin-left:100px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Leave Requests">
-	</a>  -->
-	
-	<a href="departments.php" title="Department">
-	<img src="https://cdn2.iconfinder.com/data/icons/building-219/66/3-512.png" style="padding:8px;margin-left:100px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Departments">
+	<a href="departments.php" title="View Departments">
+	<img src="https://cdn2.iconfinder.com/data/icons/building-219/66/3-512.png" style="padding:8px;margin-left:570px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Departments">
 	</a>
 
-	<a href="employees.php" title="Employee">
-	<img src="https://cdn4.iconfinder.com/data/icons/accounting-49/62/Bookkeeper-accountant-office-financial-manager-512.png" style="padding:8px;margin-left:100px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Employees List">
+	<a href="employees.php" title="View Employees">
+	<img src="https://cdn1.iconfinder.com/data/icons/business-456/500/business-strategy-256.png" style="padding:8px;margin-left:100px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Employees List">
 	</a> 
+
+	<a href="leave_approve.php" title="View Leave Requests">
+	<img src="https://cdn3.iconfinder.com/data/icons/growth-marketing-8/66/27-512.png" style="padding:8px;margin-left:570px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Leave Requests">	
+	</a> 
+
+	<a href="add_salary.php" title="Add Payroll">
+	<img src="https://cdn2.iconfinder.com/data/icons/interview-19/62/salary-payment-wage-monthly-budget-512.png" style="padding:8px;margin-left:100px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Employees List">
+	</a> 
+	
 
 	<!-- <p><?php require_once "../footer.php"; ?></p> -->
 	

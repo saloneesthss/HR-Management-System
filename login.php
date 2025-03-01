@@ -82,7 +82,8 @@ if (isset($_SESSION['rememberme']) && !empty($_SESSION['rememberme'])) {
 </head>
 <body style="font-family:Arial;	background-size:cover;	overflow:hidden;">
     <div class="container" style="justify-content:center">
-        <h1 style="padding: 40px; margin:10px; margin-bottom: 30px; text-align: center; background:#05223d; color: white; font-size: 40px; overflow:hidden;">
+        <h1 style="padding: 40px; margin:10px; margin-bottom: 30px; text-align: center; 
+            background:#05223d; color: white; font-size: 40px; overflow:hidden;">
             HR Management System
         </h1>
         <?php if(isset($_GET['error'])) { ?>
@@ -108,7 +109,9 @@ if (isset($_SESSION['rememberme']) && !empty($_SESSION['rememberme'])) {
 
             
             <input type="submit" value="Submit" name="submit" id="submit" style="padding:12px 20px;">
-            <a href="./admin/admin_login.php" style="background-color: #05223d; color: white; padding: 12px 20px; border: none; border-radius: 4px; display:inline-block; margin-top:5px;">
+            <a href="./admin/admin_login.php" 
+            style="background-color: #05223d; color: white; padding: 12px 20px; 
+            border: none; border-radius: 4px; display:inline-block; margin-top:5px;">
                 Click here for Admin Login
             </a>
 
