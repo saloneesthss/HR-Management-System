@@ -1,24 +1,13 @@
 <?php
-// Database connection
-$host = 'localhost';
-$username = 'root';
-$password = '';
-$dbname = 'hr_management_system';
+include '../logincheck.php';
 
-$conn = new mysqli($host, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
+$employee_id = $_SESSION['employeeid']; 
 // Fetch employee data
-$employee_id = isset($_GET['EmployeeID']) ? $_GET['EmployeeID'] : 1; // Example employee ID
-$sql = "SELECT * FROM employees WHERE EmployeeID = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param('i', $employee_id);
-$stmt->execute();
-$result = $stmt->get_result();
-$employee = $result->fetch_assoc();
+$employee_id = isset($_SESSION['employeeid']) ? $_SESSION['employeeid'] : ''; // Example employee ID
+$sql = "SELECT * FROM employees WHERE EmployeeID = :employee_id";
+$stmt = $con->prepare($sql);
+$stmt->execute(['employee_id' => $employee_id]);
+$employee = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$employee) {
     echo "Employee not found.";
@@ -132,7 +121,7 @@ if (!$employee) {
 
     <div class="profile-container">
         <div class="profile-header">
-            <img src="<?php echo $employee['Image'] ?>">
+            <img src="<?= htmlspecialchars($employee['Image']) ?>">
         </div>
         <div class="profile-body">
             <h2><?= htmlspecialchars($employee['Emp_Name']) ?></h2>

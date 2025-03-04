@@ -7,67 +7,31 @@ if($_SERVER['REQUEST_METHOD']==='POST' ) {
     //handle login submit
     $username=$_POST['username'];
     $password=md5($_POST['password']);
-    // $position=$_POST['position'];
 
-    $sql="select * from employees where Email='$username' and Password='$password'";
-    $sql="select * from employees where Email='$username' and Password='$password'";
-        $loginStmt=$con->prepare($sql);
-        $loginStmt->execute();
+    $sql = "SELECT * FROM employees WHERE Email='$username' AND Password='$password'";
+    $loginStmt = $con->prepare($sql);
+    $loginStmt->execute();
 
-        $loginUser=$loginStmt->fetch(PDO::FETCH_ASSOC);
-        if ($loginUser) {
-            if (isset($_POST['rememberme'])) {
-                setcookie('rememberme',1,time()+3600*24);
-            }
-            
-            $_SESSION['employee_login']=true;
-            $_SESSION['username']=$loginUser['username'];
-            $_SESSION['employeeid']=$loginUser['id'];  //stores employee id in session
-            header("Location:employee/dashboard.php?id=" . $_SESSION['employeeid']);
-            die;
-        } else {
-            //$_SESSION['error'] = 'Your entered credintials do not match our records.';
-            header("Location:login.php?error=Your entered credintials do not match our records.");
-            die;
+    $loginUser=$loginStmt->fetch(PDO::FETCH_ASSOC);
+    if ($loginUser) {
+        if (isset($_POST['rememberme'])) {
+            setcookie('rememberme',$loginUser['EmployeeID'],time()+3600*24,'/');
         }
-    // if($position === 'employee') {
-        
-    // } 
-    // elseif($position === 'manager') {
-    //     $sql="select * from manager where Email='$email' and Password='$password'";
-    //     $loginStmt=$con->prepare($sql);
-    //     $loginStmt->execute();
-
-    //     $loginUser=$loginStmt->fetch(PDO::FETCH_ASSOC);
-    //     if ($loginUser) {
-    //         if(isset($_POST['rememberme'])) {
-    //             setcookie('rememberme',1,time()+3600*24);
-    //         }
-
-    //         $_SESSION['manager_login']=true;
-    //         $_SESSION['email']=$loginUser['email'];
-    //         $_SESSION['managerid']=$loginUser['id'];  //stores manager id in session
-    //         header("Location:manager/dashboard.php");
-    //         die;
-    //     } else {
-    //         header("Location:login.php?error=Your entered credintials do not match our records.");
-    //         die;
-    //     }
-    // } 
-    // else {
-    //     header("Location:login.php?error=Please enter your position first.");
-    //     die;
-    // }
+            
+        $_SESSION['employee_login']=true;
+        $_SESSION['username']=$loginUser['Email'];
+        $_SESSION['employeeid']=$loginUser['EmployeeID'];  //stores employee id in session
+        header("Location: employee/dashboard.php?id=" . $_SESSION['employeeid']);
+        die;
+    } else {
+        header("Location:login.php?error=Your entered credintials do not match our records.");
+        die;
+    }
 }
 
-if (isset($_SESSION['rememberme']) && !empty($_SESSION['rememberme'])) {
-    // if($position === 'employee') {
-        header("Location:employee/dashboard.php");
-        die;
-    // } 
-    // else {
-    //     header("Location:manager/dashboard.php");
-    // }
+if (isset($_COOKIE['rememberme'])) {
+    header("Location:employee/dashboard.php");
+    die;
 }
 ?>
 
@@ -95,7 +59,7 @@ if (isset($_SESSION['rememberme']) && !empty($_SESSION['rememberme'])) {
             <div id="div_login">
                 <h1>Employee Login</h1>
             <div>
-              <input required type="text" placeholder="Email" name="username" class="textbox">
+              <input required type="email" placeholder="Email" name="username" class="textbox">
             </div> 
             
             <div>
@@ -107,7 +71,6 @@ if (isset($_SESSION['rememberme']) && !empty($_SESSION['rememberme'])) {
               <label class="form-check-label" for="rememberme">Remember Me</label>
             </div> 
 
-            
             <input type="submit" value="Submit" name="submit" id="submit" style="padding:12px 20px;">
             <a href="./admin/admin_login.php" 
             style="background-color: #05223d; color: white; padding: 12px 20px; 
