@@ -17,18 +17,18 @@ require_once "logincheck.php";
 <body>
 	<?php require_once "sidebar.php"; ?>
 	
-	<center>
+	<center style="margin-left:-40px;">
 	<div class="head">
 	<h2> ADMIN DASHBOARD </h2>
 	</div>
 	</center>
 	
 	<a href="departments.php" title="View Departments">
-	<img src="https://cdn4.iconfinder.com/data/icons/business-flat-17/64/collaboration-teamwork-branch-department-employee-256.png" style="padding:8px;margin-left:570px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Departments">
+	<img src="https://cdn4.iconfinder.com/data/icons/business-flat-17/64/collaboration-teamwork-branch-department-employee-256.png" style="padding:8px;margin-left:570px;margin-top:20px;width:200px;height:200px;border:2px solid black;" alt="Departments">
 	</a>
 
 	<a href="employees.php" title="View Employees">
-	<img src="https://cdn0.iconfinder.com/data/icons/job-seeker/256/front_office_job_seeker_employee_unemployee_work-256.png" style="padding:8px;margin-left:100px;margin-top:40px;width:200px;height:200px;border:2px solid black;" alt="Employees List">
+	<img src="https://cdn0.iconfinder.com/data/icons/job-seeker/256/front_office_job_seeker_employee_unemployee_work-256.png" style="padding:8px;margin-left:100px;margin-top:20px;width:200px;height:200px;border:2px solid black;" alt="Employees List">
 	</a> 
 
 	<a href="leave_approve.php" title="View Leave Requests">
@@ -40,7 +40,7 @@ require_once "logincheck.php";
 	</a> 
 	
 
-	<!-- <p><?php require_once "../footer.php"; ?></p> -->
+	<p><?php require_once "../footer.php"; ?></p>
 	
 </body>
 </html>

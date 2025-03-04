@@ -6,7 +6,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-<div class="sidebar">
+<div class="sidebar" style="z-index:100;top:0;">
 	<h2> EMPLOYEE  </h2>
 	
     <ul>
@@ -47,7 +47,7 @@
     </ul>
 </div>
 
-<div class="topnav">        
+<div class="topnav" style="z-index:100;">        
 	<a onclick="return confirm('Are you sure to logout?');" 
     href="../logout.php">Logout</a>
 </div>

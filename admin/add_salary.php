@@ -12,7 +12,10 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
     $salary=$_POST['salary'];
     $account_no=$_POST['account_no'];
     
-    $sql="insert into payroll set EmployeeID='$employee_id', `Pay date`='$paydate', Salary='$salary', `Account number`='$account_no'";
+    $tax_amount = $salary*0.01;
+    $tax_deducted_salary = $salary - ($salary * 0.01);
+
+    $sql="insert into payroll set EmployeeID='$employee_id', `Pay date`='$paydate', Salary='$salary', `Account number`='$account_no', `Tax Amount`='$tax_amount', `Net Salary`='$tax_deducted_salary'";
     $depStmt=$con->prepare($sql);
     $depStmt->execute();
 
@@ -27,6 +30,16 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
 <head>
     <title>Administrative Panel - HR Management System</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+    <script>
+        function calculateTax() {
+            let salary = document.getElementById("salary").value;
+            let taxAmount = salary * 0.01;
+            let netSalary = salary - taxAmount;
+
+            document.getElementById("tax_amount").value = taxAmount.toFixed(2);
+            document.getElementById("net_salary").value = netSalary.toFixed(2);
+        }
+    </script>
 </head>
 <body>	
     <?php require_once "sidebar.php"; ?>
@@ -62,6 +75,14 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                         <div class="form-group">
                             <label for="salary">Salary amount:</label>
                             <input type="number" class="form-control" name="salary" id="salary">
+                        </div>
+                        <div class="form-group">
+                            <label for="tax_amount">Tax Amount (1% Deducted):</label>
+                            <input type="text" class="form-control" id="tax_amount" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="net_salary">Net Salary:</label>
+                            <input type="number" class="form-control" id="net_salary" readonly>
                         </div>
                         <div class="form-group">
                             <label for="account_no">Account number:</label>

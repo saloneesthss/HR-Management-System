@@ -30,6 +30,8 @@ $payrolls=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
                                 <th>Employee Name</th>
                                 <th>Paydate</th>
                                 <th>Salary amount</th>
+                                <th>Tax amount</th>
+                                <th>Net Salary</th>
                                 <th>Account number</th>
                             </tr>
                         </thead>
@@ -41,6 +43,8 @@ $payrolls=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
                                 <td><?php echo $payroll['Emp_Name'];?></td>
                                 <td><?php echo $payroll['Pay date'];?></td>
                                 <td><?php echo $payroll['Salary'];?></td>
+                                <td><?php echo $payroll['Tax Amount'];?></td>
+                                <td><?php echo $payroll['Net Salary'];?></td>
                                 <td><?php echo $payroll['Account number'];?></td>
                             </tr>
                             <?php } ?>

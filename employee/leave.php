@@ -62,9 +62,11 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                             <label for="leavetype">Leave Type:</label>
                             <select name="leavetype" id="leavetype" class="form-control">
                                 <option value="">Select Leave Type</option>
-                                <option value="sick">Sick Leave</option>
-                                <option value="festive">Festive Leave</option>
-                                <option value="others">Other Leave (Specify reason)</option>
+                                <option value="Sick">Sick Leave</option>
+                                <option value="Festive">Festive Leave</option>
+                                <option value="Annual">Annual Leave</option>
+                                <option value="Casual">Casual Leave</option>
+                                <option value="Others">Other Leave(Specify Reason)</option>
                             </select>
                         </div>
                         <div class="form-group">
