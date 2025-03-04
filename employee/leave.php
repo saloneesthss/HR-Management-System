@@ -2,9 +2,11 @@
 require_once "../logincheck.php";
 require_once "sidebar.php";
 
-$stmtEmp=$con->prepare("select * from employees");
+$employeeid=$_SESSION['employeeid'];
+
+$stmtEmp=$con->prepare("select * from employees where EmployeeID=$employeeid");
 $stmtEmp->execute();
-$employees=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);
+$employee=$stmtEmp->fetch(PDO::FETCH_ASSOC);
 
 if($_SERVER['REQUEST_METHOD']==='POST') {
     //handle login submit
@@ -49,8 +51,8 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                             <label for="requestby">Requested By:</label>
                             <select name="requestby" id="requestby" class="form-control">
                                 <option value="">Select your name</option>
-                                <?php foreach ($employees as $employee) { ?>
-                                    <option value="<?php echo $employee['Emp_Name']; ?>">
+                                <?php if ($employee) { ?>
+                                    <option value="<?php echo $employee['Emp_Name']; ?>" selected>
                                         <?php echo $employee['Emp_Name']?>
                                     </option>
                                 <?php } ?>

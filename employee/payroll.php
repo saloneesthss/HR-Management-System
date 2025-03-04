@@ -2,13 +2,9 @@
 require_once "../logincheck.php";
 require_once "../connection.php";
 
-$salary = isset($_GET['Salary']) ? $_GET['Salary'] : '';
-$where='WHERE employees.employeeid=payroll.EmployeeID';
-if (!empty($salary)) {
-    $where="WHERE payroll.Salary=$salary";
-}
+$employeeid = $_SESSION['employeeid'];
 
-$sql="SELECT employees.Salary as Salary,employees.Emp_Name, payroll.* FROM payroll INNER JOIN employees ON employees.Salary=payroll.Salary $where";
+$sql="SELECT employees.Emp_Name, payroll.* FROM payroll INNER JOIN employees ON employees.EmployeeID=payroll.EmployeeID WHERE employees.EmployeeID=$employeeid";
 $stmtEmp=$con->prepare($sql);
 $stmtEmp->execute();
 $payrolls=$stmtEmp->fetchAll(PDO::FETCH_ASSOC);

@@ -6,7 +6,7 @@ require_once "../connection.php";
 if($_SERVER['REQUEST_METHOD']==='POST') {
     //handle login submit
     $username=$_POST['username'];
-    $password=$_POST['password'];
+    $password=md5($_POST['password']);
     
     $sql="select * from admin where username='$username' and password='$password'";
     $loginStmt=$con->prepare($sql);
@@ -48,21 +48,21 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
         <?php } ?>
         <form action="" method="POST" style="display:flex; justify-content:center">
             <div id="div_login">
-                <h1>Admin Login</h1>
-            <div>
-              <input required type="text" placeholder="Username" name="username" class="textbox">
+                <h1 style="text-align:center;">Admin Login</h1>
+            <div><br>
+              <input required type="text" placeholder="Username" name="username" class="textbox" style="margin-left:10px;">
             </div> 
             
             <div>
-              <input required type="password" placeholder="Password" name="password" class="textbox">
-            </div>
+              <input required type="password" placeholder="Password" name="password" class="textbox" style="margin-left:10px;">
+            </div> <br>
 
-            <div class="mb-3 form-check">
+            <!-- <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="rememberme" name="rememberme">
               <label class="form-check-label" for="rememberme">Remember Me</label>
-            </div> 
+            </div>  -->
 
-            <input type="submit" value="Submit" name="submit" id="submit" style="padding:12px 20px;">
+            <input type="submit" value="Submit" name="submit" id="submit" style="padding:12px 20px;margin-left:8px;">
             <a href="../login.php" 
             style="background-color:#05223d; color:white; padding:12px 20px; border:none; 
                 border-radius:4px; display:inline-block; margin-top:5px;">

@@ -57,21 +57,21 @@ if (isset($_COOKIE['rememberme'])) {
         <?php } ?>
         <form action="" method="POST" style="display:flex; flex-direction:column; justify-content:center">
             <div id="div_login">
-                <h1>Employee Login</h1>
+                <h1 style="text-align:center;">Employee Login</h1>
             <div>
-              <input required type="email" placeholder="Email" name="username" class="textbox">
+              <input required type="email" placeholder="Email" name="username" class="textbox" style="margin-left:10px;">
             </div> 
             
             <div>
-              <input required type="password" placeholder="Password" name="password" class="textbox">
+              <input required type="password" placeholder="Password" name="password" class="textbox" style="margin-left:10px;">
             </div>
 
             <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="rememberme" name="rememberme">
+              <input type="checkbox" class="form-check-input" id="rememberme" name="rememberme" style="margin-left:10px;">
               <label class="form-check-label" for="rememberme">Remember Me</label>
             </div> 
 
-            <input type="submit" value="Submit" name="submit" id="submit" style="padding:12px 20px;">
+            <input type="submit" value="Submit" name="submit" id="submit" style="padding:12px 20px;margin-left:8px;">
             <a href="./admin/admin_login.php" 
             style="background-color: #05223d; color: white; padding: 12px 20px; 
             border: none; border-radius: 4px; display:inline-block; margin-top:5px;">

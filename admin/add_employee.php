@@ -15,7 +15,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
     $gender=$_POST['gender'];
     $contact=$_POST['contact'];
     $email=$_POST['email'];
-    $password=$_POST['password'];
+    $password=md5($_POST['password']);
     $salary=$_POST['salary'];
     $Dep_Id=$_POST['Dep_Id'];
     
