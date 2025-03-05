@@ -158,8 +158,13 @@ $attendance_records = $attendance_stmt->fetchAll(PDO::FETCH_ASSOC);
                 <p>Contact</p> 
             </div>
             <div>
-                <h3><?= htmlspecialchars($employee['Salary']) ?></h3>
-                <p>Salary</p>
+                <?php 
+                $gross_salary = $employee['Salary'];
+                $tax = $gross_salary * 0.01; // 1% tax deduction
+                $net_salary = $gross_salary - $tax;
+                ?>
+                <h3><?= htmlspecialchars(number_format($net_salary, 2)) ?></h3>
+                <p>Net Salary</p>
             </div>
             <div>
                 <h3><?= htmlspecialchars($employee['Dep_Id']) ?></h3>
@@ -207,8 +212,13 @@ $attendance_records = $attendance_stmt->fetchAll(PDO::FETCH_ASSOC);
                             <td><?= htmlspecialchars($leave['Start date']) ?></td>
                             <td><?= htmlspecialchars($leave['End date']) ?></td>
                             <td>
-                                <span class="label label-<?= $leave['Status'] == 'approved' ? 'success' : ($leave['Status'] == 'rejected' ? 'danger' : 'warning') ?>">
-                                    <?= ucfirst(htmlspecialchars($leave['Status'])) ?>
+                                <?php 
+                                $status = strtolower($leave['Status']);
+                                $label_class = ($status == 'approved') ? 'success' : (($status == 'rejected') ? 'danger' : 'warning');
+                                $display_status = ($status == 'approved' || $status == 'rejected') ? ucfirst($status) : 'Pending';
+                                ?>
+                                <span class="label label-<?= $label_class ?>">
+                                    <?= htmlspecialchars($display_status) ?>
                                 </span>
                             </td>
                         </tr>
